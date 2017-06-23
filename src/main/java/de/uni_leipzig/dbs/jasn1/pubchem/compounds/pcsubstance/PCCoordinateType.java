@@ -15,16 +15,20 @@ public class PCCoordinateType extends BerInteger {
   public PCCoordinateType() {
   }
 
-  public PCCoordinateType(byte[] code) {
+  public PCCoordinateType(final byte[] code) {
     super(code);
   }
 
-  public PCCoordinateType(BigInteger value) {
+  public PCCoordinateType(final BigInteger value) {
     super(value);
   }
 
-  public PCCoordinateType(long value) {
+  public PCCoordinateType(final long value) {
     super(value);
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

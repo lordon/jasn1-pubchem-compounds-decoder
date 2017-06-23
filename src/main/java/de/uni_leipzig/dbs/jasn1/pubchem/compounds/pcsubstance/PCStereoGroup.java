@@ -29,25 +29,25 @@ public class PCStereoGroup implements Serializable {
     private List<BerInteger> seqOf = null;
 
     public Aid() {
-      seqOf = new ArrayList<BerInteger>();
+      seqOf = new ArrayList<>();
     }
 
-    public Aid(byte[] code) {
+    public Aid(final byte[] code) {
       this.code = code;
     }
 
     public List<BerInteger> getBerInteger() {
       if (seqOf == null) {
-        seqOf = new ArrayList<BerInteger>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -95,13 +95,14 @@ public class PCStereoGroup implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -130,6 +131,30 @@ public class PCStereoGroup implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerInteger> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerInteger> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
@@ -141,11 +166,11 @@ public class PCStereoGroup implements Serializable {
   public PCStereoGroup() {
   }
 
-  public PCStereoGroup(byte[] code) {
+  public PCStereoGroup(final byte[] code) {
     this.code = code;
   }
 
-  public void setType(BerInteger type) {
+  public void setType(final BerInteger type) {
     this.type = type;
   }
 
@@ -153,7 +178,7 @@ public class PCStereoGroup implements Serializable {
     return type;
   }
 
-  public void setAid(Aid aid) {
+  public void setAid(final Aid aid) {
     this.aid = aid;
   }
 
@@ -161,11 +186,11 @@ public class PCStereoGroup implements Serializable {
     return aid;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -240,13 +265,14 @@ public class PCStereoGroup implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -275,6 +301,22 @@ public class PCStereoGroup implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

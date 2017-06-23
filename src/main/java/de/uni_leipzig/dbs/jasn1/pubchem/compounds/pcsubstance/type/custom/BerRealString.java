@@ -33,4 +33,20 @@ public class BerRealString extends BerUniversalString {
   public String toString() {
     return Double.toString(this.value);
   }
+
+  public double getValue() {
+    return value;
+  }
+
+  public void setValue(final double value) {
+    this.value = value;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
+  }
 }

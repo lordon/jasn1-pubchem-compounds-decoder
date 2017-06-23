@@ -15,16 +15,20 @@ public class PCUrnDataType extends BerInteger {
   public PCUrnDataType() {
   }
 
-  public PCUrnDataType(byte[] code) {
+  public PCUrnDataType(final byte[] code) {
     super(code);
   }
 
-  public PCUrnDataType(BigInteger value) {
+  public PCUrnDataType(final BigInteger value) {
     super(value);
   }
 
-  public PCUrnDataType(long value) {
+  public PCUrnDataType(final long value) {
     super(value);
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

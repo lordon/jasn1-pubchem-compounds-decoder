@@ -28,11 +28,11 @@ public class PCStereoTShape implements Serializable {
   public PCStereoTShape() {
   }
 
-  public PCStereoTShape(byte[] code) {
+  public PCStereoTShape(final byte[] code) {
     this.code = code;
   }
 
-  public void setCenter(BerInteger center) {
+  public void setCenter(final BerInteger center) {
     this.center = center;
   }
 
@@ -40,7 +40,7 @@ public class PCStereoTShape implements Serializable {
     return center;
   }
 
-  public void setTop(BerInteger top) {
+  public void setTop(final BerInteger top) {
     this.top = top;
   }
 
@@ -48,7 +48,7 @@ public class PCStereoTShape implements Serializable {
     return top;
   }
 
-  public void setBottom(BerInteger bottom) {
+  public void setBottom(final BerInteger bottom) {
     this.bottom = bottom;
   }
 
@@ -56,7 +56,7 @@ public class PCStereoTShape implements Serializable {
     return bottom;
   }
 
-  public void setAbove(BerInteger above) {
+  public void setAbove(final BerInteger above) {
     this.above = above;
   }
 
@@ -64,11 +64,11 @@ public class PCStereoTShape implements Serializable {
     return above;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -181,13 +181,14 @@ public class PCStereoTShape implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -235,6 +236,22 @@ public class PCStereoTShape implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

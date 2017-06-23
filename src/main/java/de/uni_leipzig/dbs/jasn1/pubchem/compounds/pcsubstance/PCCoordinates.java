@@ -29,25 +29,25 @@ public class PCCoordinates implements Serializable {
     private List<PCCoordinateType> seqOf = null;
 
     public Type() {
-      seqOf = new ArrayList<PCCoordinateType>();
+      seqOf = new ArrayList<>();
     }
 
-    public Type(byte[] code) {
+    public Type(final byte[] code) {
       this.code = code;
     }
 
     public List<PCCoordinateType> getPCCoordinateType() {
       if (seqOf == null) {
-        seqOf = new ArrayList<PCCoordinateType>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -95,13 +95,14 @@ public class PCCoordinates implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -130,6 +131,30 @@ public class PCCoordinates implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCCoordinateType> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCCoordinateType> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static class Aid implements Serializable {
@@ -141,25 +166,25 @@ public class PCCoordinates implements Serializable {
     private List<BerInteger> seqOf = null;
 
     public Aid() {
-      seqOf = new ArrayList<BerInteger>();
+      seqOf = new ArrayList<>();
     }
 
-    public Aid(byte[] code) {
+    public Aid(final byte[] code) {
       this.code = code;
     }
 
     public List<BerInteger> getBerInteger() {
       if (seqOf == null) {
-        seqOf = new ArrayList<BerInteger>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -207,13 +232,14 @@ public class PCCoordinates implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -242,6 +268,30 @@ public class PCCoordinates implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerInteger> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerInteger> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static class Conformers implements Serializable {
@@ -253,25 +303,25 @@ public class PCCoordinates implements Serializable {
     private List<PCConformer> seqOf = null;
 
     public Conformers() {
-      seqOf = new ArrayList<PCConformer>();
+      seqOf = new ArrayList<>();
     }
 
-    public Conformers(byte[] code) {
+    public Conformers(final byte[] code) {
       this.code = code;
     }
 
     public List<PCConformer> getPCConformer() {
       if (seqOf == null) {
-        seqOf = new ArrayList<PCConformer>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -319,13 +369,14 @@ public class PCCoordinates implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -354,6 +405,30 @@ public class PCCoordinates implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCConformer> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCConformer> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static class Atomlabels implements Serializable {
@@ -365,25 +440,25 @@ public class PCCoordinates implements Serializable {
     private List<PCAtomString> seqOf = null;
 
     public Atomlabels() {
-      seqOf = new ArrayList<PCAtomString>();
+      seqOf = new ArrayList<>();
     }
 
-    public Atomlabels(byte[] code) {
+    public Atomlabels(final byte[] code) {
       this.code = code;
     }
 
     public List<PCAtomString> getPCAtomString() {
       if (seqOf == null) {
-        seqOf = new ArrayList<PCAtomString>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -431,13 +506,14 @@ public class PCCoordinates implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -466,6 +542,30 @@ public class PCCoordinates implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCAtomString> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCAtomString> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static class Data implements Serializable {
@@ -477,25 +577,25 @@ public class PCCoordinates implements Serializable {
     private List<PCInfoData> seqOf = null;
 
     public Data() {
-      seqOf = new ArrayList<PCInfoData>();
+      seqOf = new ArrayList<>();
     }
 
-    public Data(byte[] code) {
+    public Data(final byte[] code) {
       this.code = code;
     }
 
     public List<PCInfoData> getPCInfoData() {
       if (seqOf == null) {
-        seqOf = new ArrayList<PCInfoData>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -543,13 +643,14 @@ public class PCCoordinates implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -578,6 +679,30 @@ public class PCCoordinates implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCInfoData> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCInfoData> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
@@ -592,11 +717,11 @@ public class PCCoordinates implements Serializable {
   public PCCoordinates() {
   }
 
-  public PCCoordinates(byte[] code) {
+  public PCCoordinates(final byte[] code) {
     this.code = code;
   }
 
-  public void setType(Type type) {
+  public void setType(final Type type) {
     this.type = type;
   }
 
@@ -604,7 +729,7 @@ public class PCCoordinates implements Serializable {
     return type;
   }
 
-  public void setAid(Aid aid) {
+  public void setAid(final Aid aid) {
     this.aid = aid;
   }
 
@@ -612,7 +737,7 @@ public class PCCoordinates implements Serializable {
     return aid;
   }
 
-  public void setConformers(Conformers conformers) {
+  public void setConformers(final Conformers conformers) {
     this.conformers = conformers;
   }
 
@@ -620,7 +745,7 @@ public class PCCoordinates implements Serializable {
     return conformers;
   }
 
-  public void setAtomlabels(Atomlabels atomlabels) {
+  public void setAtomlabels(final Atomlabels atomlabels) {
     this.atomlabels = atomlabels;
   }
 
@@ -628,7 +753,7 @@ public class PCCoordinates implements Serializable {
     return atomlabels;
   }
 
-  public void setData(Data data) {
+  public void setData(final Data data) {
     this.data = data;
   }
 
@@ -636,11 +761,11 @@ public class PCCoordinates implements Serializable {
     return data;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -778,13 +903,14 @@ public class PCCoordinates implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -841,6 +967,22 @@ public class PCCoordinates implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

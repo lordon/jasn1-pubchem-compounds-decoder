@@ -34,11 +34,11 @@ public class PCCount implements Serializable {
   public PCCount() {
   }
 
-  public PCCount(byte[] code) {
+  public PCCount(final byte[] code) {
     this.code = code;
   }
 
-  public void setHeavyAtom(BerInteger heavyAtom) {
+  public void setHeavyAtom(final BerInteger heavyAtom) {
     this.heavyAtom = heavyAtom;
   }
 
@@ -46,7 +46,7 @@ public class PCCount implements Serializable {
     return heavyAtom;
   }
 
-  public void setAtomChiral(BerInteger atomChiral) {
+  public void setAtomChiral(final BerInteger atomChiral) {
     this.atomChiral = atomChiral;
   }
 
@@ -54,7 +54,7 @@ public class PCCount implements Serializable {
     return atomChiral;
   }
 
-  public void setAtomChiralDef(BerInteger atomChiralDef) {
+  public void setAtomChiralDef(final BerInteger atomChiralDef) {
     this.atomChiralDef = atomChiralDef;
   }
 
@@ -62,7 +62,7 @@ public class PCCount implements Serializable {
     return atomChiralDef;
   }
 
-  public void setAtomChiralUndef(BerInteger atomChiralUndef) {
+  public void setAtomChiralUndef(final BerInteger atomChiralUndef) {
     this.atomChiralUndef = atomChiralUndef;
   }
 
@@ -70,7 +70,7 @@ public class PCCount implements Serializable {
     return atomChiralUndef;
   }
 
-  public void setBondChiral(BerInteger bondChiral) {
+  public void setBondChiral(final BerInteger bondChiral) {
     this.bondChiral = bondChiral;
   }
 
@@ -78,7 +78,7 @@ public class PCCount implements Serializable {
     return bondChiral;
   }
 
-  public void setBondChiralDef(BerInteger bondChiralDef) {
+  public void setBondChiralDef(final BerInteger bondChiralDef) {
     this.bondChiralDef = bondChiralDef;
   }
 
@@ -86,7 +86,7 @@ public class PCCount implements Serializable {
     return bondChiralDef;
   }
 
-  public void setBondChiralUndef(BerInteger bondChiralUndef) {
+  public void setBondChiralUndef(final BerInteger bondChiralUndef) {
     this.bondChiralUndef = bondChiralUndef;
   }
 
@@ -94,7 +94,7 @@ public class PCCount implements Serializable {
     return bondChiralUndef;
   }
 
-  public void setIsotopeAtom(BerInteger isotopeAtom) {
+  public void setIsotopeAtom(final BerInteger isotopeAtom) {
     this.isotopeAtom = isotopeAtom;
   }
 
@@ -102,7 +102,7 @@ public class PCCount implements Serializable {
     return isotopeAtom;
   }
 
-  public void setCovalentUnit(BerInteger covalentUnit) {
+  public void setCovalentUnit(final BerInteger covalentUnit) {
     this.covalentUnit = covalentUnit;
   }
 
@@ -110,7 +110,7 @@ public class PCCount implements Serializable {
     return covalentUnit;
   }
 
-  public void setTautomers(BerInteger tautomers) {
+  public void setTautomers(final BerInteger tautomers) {
     this.tautomers = tautomers;
   }
 
@@ -118,11 +118,11 @@ public class PCCount implements Serializable {
     return tautomers;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -354,13 +354,14 @@ public class PCCount implements Serializable {
         + ", actual sequence length: " + subCodeLength);
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -468,6 +469,22 @@ public class PCCount implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static BerTag getTag() {
+    return tag;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

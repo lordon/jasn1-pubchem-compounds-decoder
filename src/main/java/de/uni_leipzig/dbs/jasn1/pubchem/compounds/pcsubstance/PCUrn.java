@@ -33,11 +33,11 @@ public class PCUrn implements Serializable {
   public PCUrn() {
   }
 
-  public PCUrn(byte[] code) {
+  public PCUrn(final byte[] code) {
     this.code = code;
   }
 
-  public void setLabel(BerVisibleString label) {
+  public void setLabel(final BerVisibleString label) {
     this.label = label;
   }
 
@@ -45,7 +45,7 @@ public class PCUrn implements Serializable {
     return label;
   }
 
-  public void setName(BerVisibleString name) {
+  public void setName(final BerVisibleString name) {
     this.name = name;
   }
 
@@ -53,7 +53,7 @@ public class PCUrn implements Serializable {
     return name;
   }
 
-  public void setDatatype(PCUrnDataType datatype) {
+  public void setDatatype(final PCUrnDataType datatype) {
     this.datatype = datatype;
   }
 
@@ -61,7 +61,7 @@ public class PCUrn implements Serializable {
     return datatype;
   }
 
-  public void setParameters(BerVisibleString parameters) {
+  public void setParameters(final BerVisibleString parameters) {
     this.parameters = parameters;
   }
 
@@ -69,7 +69,7 @@ public class PCUrn implements Serializable {
     return parameters;
   }
 
-  public void setImplementation(BerVisibleString implementation) {
+  public void setImplementation(final BerVisibleString implementation) {
     this.implementation = implementation;
   }
 
@@ -77,7 +77,7 @@ public class PCUrn implements Serializable {
     return implementation;
   }
 
-  public void setVersion(BerVisibleString version) {
+  public void setVersion(final BerVisibleString version) {
     this.version = version;
   }
 
@@ -85,7 +85,7 @@ public class PCUrn implements Serializable {
     return version;
   }
 
-  public void setSoftware(BerVisibleString software) {
+  public void setSoftware(final BerVisibleString software) {
     this.software = software;
   }
 
@@ -93,7 +93,7 @@ public class PCUrn implements Serializable {
     return software;
   }
 
-  public void setSource(BerVisibleString source) {
+  public void setSource(final BerVisibleString source) {
     this.source = source;
   }
 
@@ -101,7 +101,7 @@ public class PCUrn implements Serializable {
     return source;
   }
 
-  public void setRelease(BerVisibleString release) {
+  public void setRelease(final BerVisibleString release) {
     this.release = release;
   }
 
@@ -109,11 +109,11 @@ public class PCUrn implements Serializable {
     return release;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -336,13 +336,14 @@ public class PCUrn implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -424,6 +425,22 @@ public class PCUrn implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

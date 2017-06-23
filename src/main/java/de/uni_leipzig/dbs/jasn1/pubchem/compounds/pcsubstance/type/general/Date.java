@@ -22,11 +22,11 @@ public class Date implements Serializable {
   public Date() {
   }
 
-  public Date(byte[] code) {
+  public Date(final byte[] code) {
     this.code = code;
   }
 
-  public void setStr(BerVisibleString str) {
+  public void setStr(final BerVisibleString str) {
     this.str = str;
   }
 
@@ -34,7 +34,7 @@ public class Date implements Serializable {
     return str;
   }
 
-  public void setStd(DateStd std) {
+  public void setStd(final DateStd std) {
     this.std = std;
   }
 
@@ -42,11 +42,11 @@ public class Date implements Serializable {
     return std;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, null);
   }
 
-  public int decode(InputStream is, BerTag berTag) throws IOException {
+  public int decode(final InputStream is, BerTag berTag) throws IOException {
 
     int codeLength = 0;
     BerTag passedTag = berTag;
@@ -75,13 +75,14 @@ public class Date implements Serializable {
     throw new IOException("Error decoding CHOICE: Tag " + berTag + " matched to no item.");
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     if (str != null) {
       sb.append("str: ").append(str);
@@ -95,6 +96,18 @@ public class Date implements Serializable {
     }
 
     sb.append("<none>");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

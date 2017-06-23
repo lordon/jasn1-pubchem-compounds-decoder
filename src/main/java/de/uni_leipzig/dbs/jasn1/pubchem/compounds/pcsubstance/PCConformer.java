@@ -132,6 +132,30 @@ public class PCConformer implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerRealString> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerRealString> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static class Y implements Serializable {
@@ -243,6 +267,30 @@ public class PCConformer implements Serializable {
         sb.append("\t");
       }
       sb.append("}");
+    }
+
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerRealString> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerRealString> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
     }
 
   }
@@ -358,6 +406,30 @@ public class PCConformer implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerRealString> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerRealString> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static class Data implements Serializable {
@@ -469,6 +541,30 @@ public class PCConformer implements Serializable {
         sb.append("\t");
       }
       sb.append("}");
+    }
+
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCInfoData> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCInfoData> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
     }
 
   }
@@ -734,6 +830,22 @@ public class PCConformer implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

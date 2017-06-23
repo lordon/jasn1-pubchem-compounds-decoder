@@ -32,11 +32,11 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
   public PCStereoPentagonalBiPyramid() {
   }
 
-  public PCStereoPentagonalBiPyramid(byte[] code) {
+  public PCStereoPentagonalBiPyramid(final byte[] code) {
     this.code = code;
   }
 
-  public void setCenter(BerInteger center) {
+  public void setCenter(final BerInteger center) {
     this.center = center;
   }
 
@@ -44,7 +44,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return center;
   }
 
-  public void setTop(BerInteger top) {
+  public void setTop(final BerInteger top) {
     this.top = top;
   }
 
@@ -52,7 +52,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return top;
   }
 
-  public void setBottom(BerInteger bottom) {
+  public void setBottom(final BerInteger bottom) {
     this.bottom = bottom;
   }
 
@@ -60,7 +60,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return bottom;
   }
 
-  public void setLeft(BerInteger left) {
+  public void setLeft(final BerInteger left) {
     this.left = left;
   }
 
@@ -68,7 +68,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return left;
   }
 
-  public void setLabove(BerInteger labove) {
+  public void setLabove(final BerInteger labove) {
     this.labove = labove;
   }
 
@@ -76,7 +76,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return labove;
   }
 
-  public void setLbelow(BerInteger lbelow) {
+  public void setLbelow(final BerInteger lbelow) {
     this.lbelow = lbelow;
   }
 
@@ -84,7 +84,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return lbelow;
   }
 
-  public void setRabove(BerInteger rabove) {
+  public void setRabove(final BerInteger rabove) {
     this.rabove = rabove;
   }
 
@@ -92,7 +92,7 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return rabove;
   }
 
-  public void setRbelow(BerInteger rbelow) {
+  public void setRbelow(final BerInteger rbelow) {
     this.rbelow = rbelow;
   }
 
@@ -100,11 +100,11 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     return rbelow;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -297,13 +297,14 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -391,6 +392,22 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

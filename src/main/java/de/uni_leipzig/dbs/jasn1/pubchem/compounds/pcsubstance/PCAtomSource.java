@@ -26,11 +26,11 @@ public class PCAtomSource implements Serializable {
   public PCAtomSource() {
   }
 
-  public PCAtomSource(byte[] code) {
+  public PCAtomSource(final byte[] code) {
     this.code = code;
   }
 
-  public void setAid(BerInteger aid) {
+  public void setAid(final BerInteger aid) {
     this.aid = aid;
   }
 
@@ -38,7 +38,7 @@ public class PCAtomSource implements Serializable {
     return aid;
   }
 
-  public void setSource(PCMMDBSource source) {
+  public void setSource(final PCMMDBSource source) {
     this.source = source;
   }
 
@@ -46,11 +46,11 @@ public class PCAtomSource implements Serializable {
     return source;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -124,13 +124,14 @@ public class PCAtomSource implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -159,6 +160,22 @@ public class PCAtomSource implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static BerTag getTag() {
+    return tag;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

@@ -15,16 +15,20 @@ public class PCBondAnnotation extends BerInteger {
   public PCBondAnnotation() {
   }
 
-  public PCBondAnnotation(byte[] code) {
+  public PCBondAnnotation(final byte[] code) {
     super(code);
   }
 
-  public PCBondAnnotation(BigInteger value) {
+  public PCBondAnnotation(final BigInteger value) {
     super(value);
   }
 
-  public PCBondAnnotation(long value) {
+  public PCBondAnnotation(final long value) {
     super(value);
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

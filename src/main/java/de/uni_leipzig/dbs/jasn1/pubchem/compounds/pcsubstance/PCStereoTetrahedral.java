@@ -31,11 +31,11 @@ public class PCStereoTetrahedral implements Serializable {
   public PCStereoTetrahedral() {
   }
 
-  public PCStereoTetrahedral(byte[] code) {
+  public PCStereoTetrahedral(final byte[] code) {
     this.code = code;
   }
 
-  public void setCenter(BerInteger center) {
+  public void setCenter(final BerInteger center) {
     this.center = center;
   }
 
@@ -43,7 +43,7 @@ public class PCStereoTetrahedral implements Serializable {
     return center;
   }
 
-  public void setAbove(BerInteger above) {
+  public void setAbove(final BerInteger above) {
     this.above = above;
   }
 
@@ -51,7 +51,7 @@ public class PCStereoTetrahedral implements Serializable {
     return above;
   }
 
-  public void setTop(BerInteger top) {
+  public void setTop(final BerInteger top) {
     this.top = top;
   }
 
@@ -59,7 +59,7 @@ public class PCStereoTetrahedral implements Serializable {
     return top;
   }
 
-  public void setBottom(BerInteger bottom) {
+  public void setBottom(final BerInteger bottom) {
     this.bottom = bottom;
   }
 
@@ -67,7 +67,7 @@ public class PCStereoTetrahedral implements Serializable {
     return bottom;
   }
 
-  public void setBelow(BerInteger below) {
+  public void setBelow(final BerInteger below) {
     this.below = below;
   }
 
@@ -75,7 +75,7 @@ public class PCStereoTetrahedral implements Serializable {
     return below;
   }
 
-  public void setParity(BerInteger parity) {
+  public void setParity(final BerInteger parity) {
     this.parity = parity;
   }
 
@@ -83,7 +83,7 @@ public class PCStereoTetrahedral implements Serializable {
     return parity;
   }
 
-  public void setType(BerInteger type) {
+  public void setType(final BerInteger type) {
     this.type = type;
   }
 
@@ -91,11 +91,11 @@ public class PCStereoTetrahedral implements Serializable {
     return type;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -271,13 +271,14 @@ public class PCStereoTetrahedral implements Serializable {
         + ", actual sequence length: " + subCodeLength);
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -351,6 +352,22 @@ public class PCStereoTetrahedral implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

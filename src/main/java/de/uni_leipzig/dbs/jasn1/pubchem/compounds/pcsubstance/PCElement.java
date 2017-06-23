@@ -15,16 +15,20 @@ public class PCElement extends BerInteger {
   public PCElement() {
   }
 
-  public PCElement(byte[] code) {
+  public PCElement(final byte[] code) {
     super(code);
   }
 
-  public PCElement(BigInteger value) {
+  public PCElement(final BigInteger value) {
     super(value);
   }
 
-  public PCElement(long value) {
+  public PCElement(final long value) {
     super(value);
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

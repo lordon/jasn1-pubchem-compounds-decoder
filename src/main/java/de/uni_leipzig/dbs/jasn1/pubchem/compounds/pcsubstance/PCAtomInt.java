@@ -160,4 +160,20 @@ public class PCAtomInt implements Serializable {
     sb.append("}");
   }
 
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
+  }
+
 }

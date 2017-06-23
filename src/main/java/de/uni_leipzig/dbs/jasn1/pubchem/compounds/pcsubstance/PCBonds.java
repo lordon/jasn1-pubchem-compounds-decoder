@@ -29,25 +29,25 @@ public class PCBonds implements Serializable {
     private List<BerInteger> seqOf = null;
 
     public Aid1() {
-      seqOf = new ArrayList<BerInteger>();
+      seqOf = new ArrayList<>();
     }
 
-    public Aid1(byte[] code) {
+    public Aid1(final byte[] code) {
       this.code = code;
     }
 
     public List<BerInteger> getBerInteger() {
       if (seqOf == null) {
-        seqOf = new ArrayList<BerInteger>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -95,13 +95,14 @@ public class PCBonds implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -128,6 +129,30 @@ public class PCBonds implements Serializable {
         sb.append("\t");
       }
       sb.append("}");
+    }
+
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerInteger> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerInteger> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
     }
 
   }
@@ -141,25 +166,25 @@ public class PCBonds implements Serializable {
     private List<BerInteger> seqOf = null;
 
     public Aid2() {
-      seqOf = new ArrayList<BerInteger>();
+      seqOf = new ArrayList<>();
     }
 
-    public Aid2(byte[] code) {
+    public Aid2(final byte[] code) {
       this.code = code;
     }
 
     public List<BerInteger> getBerInteger() {
       if (seqOf == null) {
-        seqOf = new ArrayList<BerInteger>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -207,13 +232,14 @@ public class PCBonds implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -242,6 +268,30 @@ public class PCBonds implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerInteger> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerInteger> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
   }
 
   public static class Order implements Serializable {
@@ -253,25 +303,25 @@ public class PCBonds implements Serializable {
     private List<PCBondType> seqOf = null;
 
     public Order() {
-      seqOf = new ArrayList<PCBondType>();
+      seqOf = new ArrayList<>();
     }
 
-    public Order(byte[] code) {
+    public Order(final byte[] code) {
       this.code = code;
     }
 
     public List<PCBondType> getPCBondType() {
       if (seqOf == null) {
-        seqOf = new ArrayList<PCBondType>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -319,13 +369,14 @@ public class PCBonds implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -354,6 +405,30 @@ public class PCBonds implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCBondType> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCBondType> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
   }
 
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
@@ -366,11 +441,11 @@ public class PCBonds implements Serializable {
   public PCBonds() {
   }
 
-  public PCBonds(byte[] code) {
+  public PCBonds(final byte[] code) {
     this.code = code;
   }
 
-  public void setAid1(Aid1 aid1) {
+  public void setAid1(final Aid1 aid1) {
     this.aid1 = aid1;
   }
 
@@ -378,7 +453,7 @@ public class PCBonds implements Serializable {
     return aid1;
   }
 
-  public void setAid2(Aid2 aid2) {
+  public void setAid2(final Aid2 aid2) {
     this.aid2 = aid2;
   }
 
@@ -386,7 +461,7 @@ public class PCBonds implements Serializable {
     return aid2;
   }
 
-  public void setOrder(Order order) {
+  public void setOrder(final Order order) {
     this.order = order;
   }
 
@@ -394,11 +469,11 @@ public class PCBonds implements Serializable {
     return order;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -490,13 +565,14 @@ public class PCBonds implements Serializable {
         + ", actual sequence length: " + subCodeLength);
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -537,6 +613,22 @@ public class PCBonds implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static BerTag getTag() {
+    return tag;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

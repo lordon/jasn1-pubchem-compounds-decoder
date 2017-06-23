@@ -32,11 +32,11 @@ public class DateStd implements Serializable {
   public DateStd() {
   }
 
-  public DateStd(byte[] code) {
+  public DateStd(final byte[] code) {
     this.code = code;
   }
 
-  public void setYear(BerInteger year) {
+  public void setYear(final BerInteger year) {
     this.year = year;
   }
 
@@ -44,7 +44,7 @@ public class DateStd implements Serializable {
     return year;
   }
 
-  public void setMonth(BerInteger month) {
+  public void setMonth(final BerInteger month) {
     this.month = month;
   }
 
@@ -52,7 +52,7 @@ public class DateStd implements Serializable {
     return month;
   }
 
-  public void setDay(BerInteger day) {
+  public void setDay(final BerInteger day) {
     this.day = day;
   }
 
@@ -60,7 +60,7 @@ public class DateStd implements Serializable {
     return day;
   }
 
-  public void setSeason(BerVisibleString season) {
+  public void setSeason(final BerVisibleString season) {
     this.season = season;
   }
 
@@ -68,7 +68,7 @@ public class DateStd implements Serializable {
     return season;
   }
 
-  public void setHour(BerInteger hour) {
+  public void setHour(final BerInteger hour) {
     this.hour = hour;
   }
 
@@ -76,7 +76,7 @@ public class DateStd implements Serializable {
     return hour;
   }
 
-  public void setMinute(BerInteger minute) {
+  public void setMinute(final BerInteger minute) {
     this.minute = minute;
   }
 
@@ -84,7 +84,7 @@ public class DateStd implements Serializable {
     return minute;
   }
 
-  public void setSecond(BerInteger second) {
+  public void setSecond(final BerInteger second) {
     this.second = second;
   }
 
@@ -92,11 +92,11 @@ public class DateStd implements Serializable {
     return second;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -306,13 +306,14 @@ public class DateStd implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -378,6 +379,22 @@ public class DateStd implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

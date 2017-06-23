@@ -24,25 +24,25 @@ public class PCConformers implements Serializable {
   private List<PCConformer> seqOf = null;
 
   public PCConformers() {
-    seqOf = new ArrayList<PCConformer>();
+    seqOf = new ArrayList<>();
   }
 
-  public PCConformers(byte[] code) {
+  public PCConformers(final byte[] code) {
     this.code = code;
   }
 
   public List<PCConformer> getPCConformer() {
     if (seqOf == null) {
-      seqOf = new ArrayList<PCConformer>();
+      seqOf = new ArrayList<>();
     }
     return seqOf;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -90,13 +90,14 @@ public class PCConformers implements Serializable {
     return codeLength;
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{\n");
     for (int i = 0; i < indentLevel + 1; i++) {
@@ -123,6 +124,30 @@ public class PCConformers implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public List<PCConformer> getSeqOf() {
+    return seqOf;
+  }
+
+  public void setSeqOf(final List<PCConformer> seqOf) {
+    this.seqOf = seqOf;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

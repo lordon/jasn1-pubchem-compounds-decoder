@@ -15,16 +15,20 @@ public class PCBondType extends BerInteger {
   public PCBondType() {
   }
 
-  public PCBondType(byte[] code) {
+  public PCBondType(final byte[] code) {
     super(code);
   }
 
-  public PCBondType(BigInteger value) {
+  public PCBondType(final BigInteger value) {
     super(value);
   }
 
-  public PCBondType(long value) {
+  public PCBondType(final long value) {
     super(value);
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

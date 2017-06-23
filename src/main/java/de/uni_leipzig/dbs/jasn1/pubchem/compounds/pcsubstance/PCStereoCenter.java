@@ -27,11 +27,11 @@ public class PCStereoCenter implements Serializable {
   public PCStereoCenter() {
   }
 
-  public PCStereoCenter(byte[] code) {
+  public PCStereoCenter(final byte[] code) {
     this.code = code;
   }
 
-  public void setTetrahedral(PCStereoTetrahedral tetrahedral) {
+  public void setTetrahedral(final PCStereoTetrahedral tetrahedral) {
     this.tetrahedral = tetrahedral;
   }
 
@@ -39,7 +39,7 @@ public class PCStereoCenter implements Serializable {
     return tetrahedral;
   }
 
-  public void setPlanar(PCStereoPlanar planar) {
+  public void setPlanar(final PCStereoPlanar planar) {
     this.planar = planar;
   }
 
@@ -47,7 +47,7 @@ public class PCStereoCenter implements Serializable {
     return planar;
   }
 
-  public void setSquareplanar(PCStereoSquarePlanar squareplanar) {
+  public void setSquareplanar(final PCStereoSquarePlanar squareplanar) {
     this.squareplanar = squareplanar;
   }
 
@@ -55,7 +55,7 @@ public class PCStereoCenter implements Serializable {
     return squareplanar;
   }
 
-  public void setOctahedral(PCStereoOctahedral octahedral) {
+  public void setOctahedral(final PCStereoOctahedral octahedral) {
     this.octahedral = octahedral;
   }
 
@@ -63,7 +63,7 @@ public class PCStereoCenter implements Serializable {
     return octahedral;
   }
 
-  public void setBipyramid(PCStereoTrigonalBiPyramid bipyramid) {
+  public void setBipyramid(final PCStereoTrigonalBiPyramid bipyramid) {
     this.bipyramid = bipyramid;
   }
 
@@ -71,7 +71,7 @@ public class PCStereoCenter implements Serializable {
     return bipyramid;
   }
 
-  public void setTshape(PCStereoTShape tshape) {
+  public void setTshape(final PCStereoTShape tshape) {
     this.tshape = tshape;
   }
 
@@ -79,7 +79,7 @@ public class PCStereoCenter implements Serializable {
     return tshape;
   }
 
-  public void setPentagonal(PCStereoPentagonalBiPyramid pentagonal) {
+  public void setPentagonal(final PCStereoPentagonalBiPyramid pentagonal) {
     this.pentagonal = pentagonal;
   }
 
@@ -87,11 +87,11 @@ public class PCStereoCenter implements Serializable {
     return pentagonal;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, null);
   }
 
-  public int decode(InputStream is, BerTag berTag) throws IOException {
+  public int decode(final InputStream is, BerTag berTag) throws IOException {
 
     int codeLength = 0;
     BerTag passedTag = berTag;
@@ -157,13 +157,14 @@ public class PCStereoCenter implements Serializable {
     throw new IOException("Error decoding CHOICE: Tag " + berTag + " matched to no item.");
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     if (tetrahedral != null) {
       sb.append("tetrahedral: ");
@@ -208,6 +209,18 @@ public class PCStereoCenter implements Serializable {
     }
 
     sb.append("<none>");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

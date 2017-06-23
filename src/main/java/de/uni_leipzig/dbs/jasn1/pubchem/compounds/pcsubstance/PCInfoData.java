@@ -144,6 +144,30 @@ public class PCInfoData implements Serializable {
         sb.append("}");
       }
 
+      public byte[] getCode() {
+        return code;
+      }
+
+      public void setCode(final byte[] code) {
+        this.code = code;
+      }
+
+      public List<BerBoolean> getSeqOf() {
+        return seqOf;
+      }
+
+      public void setSeqOf(final List<BerBoolean> seqOf) {
+        this.seqOf = seqOf;
+      }
+
+      public static long getSerialversionuid() {
+        return serialVersionUID;
+      }
+
+      public static BerTag getTag() {
+        return tag;
+      }
+
     }
 
     public static class Ivec implements Serializable {
@@ -255,6 +279,30 @@ public class PCInfoData implements Serializable {
           sb.append("\t");
         }
         sb.append("}");
+      }
+
+      public byte[] getCode() {
+        return code;
+      }
+
+      public void setCode(final byte[] code) {
+        this.code = code;
+      }
+
+      public List<BerInteger> getSeqOf() {
+        return seqOf;
+      }
+
+      public void setSeqOf(final List<BerInteger> seqOf) {
+        this.seqOf = seqOf;
+      }
+
+      public static long getSerialversionuid() {
+        return serialVersionUID;
+      }
+
+      public static BerTag getTag() {
+        return tag;
       }
 
     }
@@ -370,6 +418,30 @@ public class PCInfoData implements Serializable {
         sb.append("}");
       }
 
+      public byte[] getCode() {
+        return code;
+      }
+
+      public void setCode(final byte[] code) {
+        this.code = code;
+      }
+
+      public List<BerRealString> getSeqOf() {
+        return seqOf;
+      }
+
+      public void setSeqOf(final List<BerRealString> seqOf) {
+        this.seqOf = seqOf;
+      }
+
+      public static long getSerialversionuid() {
+        return serialVersionUID;
+      }
+
+      public static BerTag getTag() {
+        return tag;
+      }
+
     }
 
     public static class Slist implements Serializable {
@@ -481,6 +553,30 @@ public class PCInfoData implements Serializable {
           sb.append("\t");
         }
         sb.append("}");
+      }
+
+      public byte[] getCode() {
+        return code;
+      }
+
+      public void setCode(final byte[] code) {
+        this.code = code;
+      }
+
+      public List<BerRealString> getSeqOf() {
+        return seqOf;
+      }
+
+      public void setSeqOf(final List<BerRealString> seqOf) {
+        this.seqOf = seqOf;
+      }
+
+      public static long getSerialversionuid() {
+        return serialVersionUID;
+      }
+
+      public static BerTag getTag() {
+        return tag;
       }
 
     }
@@ -763,6 +859,18 @@ public class PCInfoData implements Serializable {
       sb.append("<none>");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
   }
 
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
@@ -912,6 +1020,22 @@ public class PCInfoData implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

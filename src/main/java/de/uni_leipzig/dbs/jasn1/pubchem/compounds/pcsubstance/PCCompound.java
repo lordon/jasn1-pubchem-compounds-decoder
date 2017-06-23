@@ -134,6 +134,30 @@ public class PCCompound implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCStereoCenter> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCStereoCenter> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
   }
 
   public static class Coords implements Serializable {
@@ -245,6 +269,30 @@ public class PCCompound implements Serializable {
         sb.append("\t");
       }
       sb.append("}");
+    }
+
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCCoordinates> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCCoordinates> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
     }
 
   }
@@ -363,6 +411,30 @@ public class PCCompound implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCInfoData> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCInfoData> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
   }
 
   public static class Stereogroups implements Serializable {
@@ -474,6 +546,30 @@ public class PCCompound implements Serializable {
         sb.append("\t");
       }
       sb.append("}");
+    }
+
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<PCStereoGroup> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<PCStereoGroup> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
     }
 
   }
@@ -938,6 +1034,22 @@ public class PCCompound implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

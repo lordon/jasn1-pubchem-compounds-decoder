@@ -29,11 +29,11 @@ public class PCCompoundType implements Serializable {
     public Id() {
     }
 
-    public Id(byte[] code) {
+    public Id(final byte[] code) {
       this.code = code;
     }
 
-    public void setCid(BerInteger cid) {
+    public void setCid(final BerInteger cid) {
       this.cid = cid;
     }
 
@@ -41,7 +41,7 @@ public class PCCompoundType implements Serializable {
       return cid;
     }
 
-    public void setSid(BerInteger sid) {
+    public void setSid(final BerInteger sid) {
       this.sid = sid;
     }
 
@@ -49,7 +49,7 @@ public class PCCompoundType implements Serializable {
       return sid;
     }
 
-    public void setXid(BerInteger xid) {
+    public void setXid(final BerInteger xid) {
       this.xid = xid;
     }
 
@@ -57,11 +57,11 @@ public class PCCompoundType implements Serializable {
       return xid;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, null);
     }
 
-    public int decode(InputStream is, BerTag berTag) throws IOException {
+    public int decode(final InputStream is, BerTag berTag) throws IOException {
 
       int codeLength = 0;
       BerTag passedTag = berTag;
@@ -99,13 +99,14 @@ public class PCCompoundType implements Serializable {
       throw new IOException("Error decoding CHOICE: Tag " + berTag + " matched to no item.");
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       if (cid != null) {
         sb.append("cid: ").append(cid);
@@ -125,6 +126,18 @@ public class PCCompoundType implements Serializable {
       sb.append("<none>");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
   }
 
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
@@ -136,11 +149,11 @@ public class PCCompoundType implements Serializable {
   public PCCompoundType() {
   }
 
-  public PCCompoundType(byte[] code) {
+  public PCCompoundType(final byte[] code) {
     this.code = code;
   }
 
-  public void setType(BerInteger type) {
+  public void setType(final BerInteger type) {
     this.type = type;
   }
 
@@ -148,7 +161,7 @@ public class PCCompoundType implements Serializable {
     return type;
   }
 
-  public void setId(Id id) {
+  public void setId(final Id id) {
     this.id = id;
   }
 
@@ -156,11 +169,11 @@ public class PCCompoundType implements Serializable {
     return id;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -244,13 +257,14 @@ public class PCCompoundType implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     boolean firstSelectedElement = true;
@@ -280,6 +294,22 @@ public class PCCompoundType implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static BerTag getTag() {
+    return tag;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 
 }

@@ -32,11 +32,11 @@ public class PCStereoPlanar implements Serializable {
   public PCStereoPlanar() {
   }
 
-  public PCStereoPlanar(byte[] code) {
+  public PCStereoPlanar(final byte[] code) {
     this.code = code;
   }
 
-  public void setLeft(BerInteger left) {
+  public void setLeft(final BerInteger left) {
     this.left = left;
   }
 
@@ -44,7 +44,7 @@ public class PCStereoPlanar implements Serializable {
     return left;
   }
 
-  public void setLtop(BerInteger ltop) {
+  public void setLtop(final BerInteger ltop) {
     this.ltop = ltop;
   }
 
@@ -52,7 +52,7 @@ public class PCStereoPlanar implements Serializable {
     return ltop;
   }
 
-  public void setLbottom(BerInteger lbottom) {
+  public void setLbottom(final BerInteger lbottom) {
     this.lbottom = lbottom;
   }
 
@@ -60,7 +60,7 @@ public class PCStereoPlanar implements Serializable {
     return lbottom;
   }
 
-  public void setRight(BerInteger right) {
+  public void setRight(final BerInteger right) {
     this.right = right;
   }
 
@@ -68,7 +68,7 @@ public class PCStereoPlanar implements Serializable {
     return right;
   }
 
-  public void setRtop(BerInteger rtop) {
+  public void setRtop(final BerInteger rtop) {
     this.rtop = rtop;
   }
 
@@ -76,7 +76,7 @@ public class PCStereoPlanar implements Serializable {
     return rtop;
   }
 
-  public void setRbottom(BerInteger rbottom) {
+  public void setRbottom(final BerInteger rbottom) {
     this.rbottom = rbottom;
   }
 
@@ -84,7 +84,7 @@ public class PCStereoPlanar implements Serializable {
     return rbottom;
   }
 
-  public void setParity(BerInteger parity) {
+  public void setParity(final BerInteger parity) {
     this.parity = parity;
   }
 
@@ -92,7 +92,7 @@ public class PCStereoPlanar implements Serializable {
     return parity;
   }
 
-  public void setType(BerInteger type) {
+  public void setType(final BerInteger type) {
     this.type = type;
   }
 
@@ -100,11 +100,11 @@ public class PCStereoPlanar implements Serializable {
     return type;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -301,13 +301,14 @@ public class PCStereoPlanar implements Serializable {
 
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -391,6 +392,22 @@ public class PCStereoPlanar implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }

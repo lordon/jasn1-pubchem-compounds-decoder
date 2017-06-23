@@ -30,25 +30,25 @@ public class PCMMDBSource implements Serializable {
     private List<BerVisibleString> seqOf = null;
 
     public MoleculeName() {
-      seqOf = new ArrayList<BerVisibleString>();
+      seqOf = new ArrayList<>();
     }
 
-    public MoleculeName(byte[] code) {
+    public MoleculeName(final byte[] code) {
       this.code = code;
     }
 
     public List<BerVisibleString> getBerVisibleString() {
       if (seqOf == null) {
-        seqOf = new ArrayList<BerVisibleString>();
+        seqOf = new ArrayList<>();
       }
       return seqOf;
     }
 
-    public int decode(InputStream is) throws IOException {
+    public int decode(final InputStream is) throws IOException {
       return decode(is, true);
     }
 
-    public int decode(InputStream is, boolean withTag) throws IOException {
+    public int decode(final InputStream is, final boolean withTag) throws IOException {
       int codeLength = 0;
       int subCodeLength = 0;
       BerTag berTag = new BerTag();
@@ -96,13 +96,14 @@ public class PCMMDBSource implements Serializable {
       return codeLength;
     }
 
+    @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
       appendAsString(sb, 0);
       return sb.toString();
     }
 
-    public void appendAsString(StringBuilder sb, int indentLevel) {
+    public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
       sb.append("{\n");
       for (int i = 0; i < indentLevel + 1; i++) {
@@ -131,6 +132,30 @@ public class PCMMDBSource implements Serializable {
       sb.append("}");
     }
 
+    public byte[] getCode() {
+      return code;
+    }
+
+    public void setCode(final byte[] code) {
+      this.code = code;
+    }
+
+    public List<BerVisibleString> getSeqOf() {
+      return seqOf;
+    }
+
+    public void setSeqOf(final List<BerVisibleString> seqOf) {
+      this.seqOf = seqOf;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
+    }
+
+    public static BerTag getTag() {
+      return tag;
+    }
+
   }
 
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
@@ -147,11 +172,11 @@ public class PCMMDBSource implements Serializable {
   public PCMMDBSource() {
   }
 
-  public PCMMDBSource(byte[] code) {
+  public PCMMDBSource(final byte[] code) {
     this.code = code;
   }
 
-  public void setMmdbId(BerInteger mmdbId) {
+  public void setMmdbId(final BerInteger mmdbId) {
     this.mmdbId = mmdbId;
   }
 
@@ -159,7 +184,7 @@ public class PCMMDBSource implements Serializable {
     return mmdbId;
   }
 
-  public void setMoleculeId(BerInteger moleculeId) {
+  public void setMoleculeId(final BerInteger moleculeId) {
     this.moleculeId = moleculeId;
   }
 
@@ -167,7 +192,7 @@ public class PCMMDBSource implements Serializable {
     return moleculeId;
   }
 
-  public void setMoleculeName(MoleculeName moleculeName) {
+  public void setMoleculeName(final MoleculeName moleculeName) {
     this.moleculeName = moleculeName;
   }
 
@@ -175,7 +200,7 @@ public class PCMMDBSource implements Serializable {
     return moleculeName;
   }
 
-  public void setResidueId(BerInteger residueId) {
+  public void setResidueId(final BerInteger residueId) {
     this.residueId = residueId;
   }
 
@@ -183,7 +208,7 @@ public class PCMMDBSource implements Serializable {
     return residueId;
   }
 
-  public void setResidueName(BerVisibleString residueName) {
+  public void setResidueName(final BerVisibleString residueName) {
     this.residueName = residueName;
   }
 
@@ -191,7 +216,7 @@ public class PCMMDBSource implements Serializable {
     return residueName;
   }
 
-  public void setAtomId(BerInteger atomId) {
+  public void setAtomId(final BerInteger atomId) {
     this.atomId = atomId;
   }
 
@@ -199,7 +224,7 @@ public class PCMMDBSource implements Serializable {
     return atomId;
   }
 
-  public void setAtomName(BerVisibleString atomName) {
+  public void setAtomName(final BerVisibleString atomName) {
     this.atomName = atomName;
   }
 
@@ -207,11 +232,11 @@ public class PCMMDBSource implements Serializable {
     return atomName;
   }
 
-  public int decode(InputStream is) throws IOException {
+  public int decode(final InputStream is) throws IOException {
     return decode(is, true);
   }
 
-  public int decode(InputStream is, boolean withTag) throws IOException {
+  public int decode(final InputStream is, final boolean withTag) throws IOException {
     int codeLength = 0;
     int subCodeLength = 0;
     BerTag berTag = new BerTag();
@@ -418,13 +443,14 @@ public class PCMMDBSource implements Serializable {
         + ", actual sequence length: " + subCodeLength);
   }
 
+  @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     appendAsString(sb, 0);
     return sb.toString();
   }
 
-  public void appendAsString(StringBuilder sb, int indentLevel) {
+  public void appendAsString(final StringBuilder sb, final int indentLevel) {
 
     sb.append("{");
     sb.append("\n");
@@ -495,6 +521,22 @@ public class PCMMDBSource implements Serializable {
       sb.append("\t");
     }
     sb.append("}");
+  }
+
+  public byte[] getCode() {
+    return code;
+  }
+
+  public void setCode(final byte[] code) {
+    this.code = code;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+
+  public static BerTag getTag() {
+    return tag;
   }
 
 }
