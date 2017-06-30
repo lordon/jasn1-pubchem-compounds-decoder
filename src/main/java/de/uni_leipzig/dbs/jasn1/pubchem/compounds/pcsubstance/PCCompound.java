@@ -16,9 +16,14 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.util.PCCompoundFilter;
+import de.uni_leipzig.dbs.jasn1.pubchem.util.PropsFilter;
+
 public class PCCompound implements Serializable {
 
   private static final long serialVersionUID = 1L;
+
+  private PCCompoundFilter pcFilter = new PCCompoundFilter();
 
   public static class Stereo implements Serializable {
 
@@ -304,9 +309,15 @@ public class PCCompound implements Serializable {
     public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
     public byte[] code = null;
     private List<PCInfoData> seqOf = null;
+    private PropsFilter propsFilter = null;
 
     public Props() {
       seqOf = new ArrayList<>();
+    }
+
+    public Props(final PropsFilter filter) {
+      this();
+      this.propsFilter = filter;
     }
 
     public Props(final byte[] code) {
@@ -352,16 +363,18 @@ public class PCCompound implements Serializable {
             return codeLength;
           }
 
-          PCInfoData element = new PCInfoData();
+          PCInfoData element = new PCInfoData(propsFilter);
           subCodeLength += element.decode(is, false);
-          seqOf.add(element);
+          if (!element.isDropMe()) {
+            seqOf.add(element);
+          }
 
           is.read();
           berTag.decode(is);
         }
       }
       while (subCodeLength < totalLength) {
-        PCInfoData element = new PCInfoData();
+        PCInfoData element = new PCInfoData(propsFilter);
         subCodeLength += element.decode(is, true);
         seqOf.add(element);
       }
@@ -591,6 +604,18 @@ public class PCCompound implements Serializable {
   public PCCompound() {
   }
 
+  /**
+   * If pcFilter is null, a empty Filter will be used.
+   * 
+   * @param pcFilter
+   */
+  public PCCompound(final PCCompoundFilter pcFilter) {
+    if (pcFilter != null) {
+      this.pcFilter = pcFilter;
+    }
+
+  }
+
   public PCCompound(final byte[] code) {
     this.code = code;
   }
@@ -715,6 +740,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         atoms = new PCAtoms();
         subCodeLength += atoms.decode(is, true);
+        if (!pcFilter.isParseAtoms()) {
+          atoms = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -726,6 +754,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         bonds = new PCBonds();
         subCodeLength += bonds.decode(is, true);
+        if (!pcFilter.isParseBonds()) {
+          bonds = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -737,6 +768,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         stereo = new Stereo();
         subCodeLength += stereo.decode(is, true);
+        if (!pcFilter.isParseStereo()) {
+          stereo = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -748,6 +782,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         coords = new Coords();
         subCodeLength += coords.decode(is, true);
+        if (!pcFilter.isParseCoords()) {
+          coords = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -759,6 +796,7 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         charge = new BerInteger();
         subCodeLength += charge.decode(is, true);
+
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -768,7 +806,7 @@ public class PCCompound implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
         codeLength += length.decode(is);
-        props = new Props();
+        props = new Props(pcFilter.getPropsFilter());
         subCodeLength += props.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -781,6 +819,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         stereogroups = new Stereogroups();
         subCodeLength += stereogroups.decode(is, true);
+        if (!pcFilter.isParseStereogroups()) {
+          stereogroups = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -792,6 +833,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         count = new PCCount();
         subCodeLength += count.decode(is, true);
+        if (!pcFilter.isParseCount()) {
+          count = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -803,6 +847,9 @@ public class PCCompound implements Serializable {
         codeLength += length.decode(is);
         vbalt = new PCCompounds();
         subCodeLength += vbalt.decode(is, true);
+        if (!pcFilter.isParseVbalt()) {
+          vbalt = null;
+        }
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -839,6 +886,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       atoms = new PCAtoms();
       subCodeLength += atoms.decode(is, true);
+      if (!pcFilter.isParseAtoms()) {
+        atoms = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -849,6 +899,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       bonds = new PCBonds();
       subCodeLength += bonds.decode(is, true);
+      if (!pcFilter.isParseBonds()) {
+        bonds = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -859,6 +912,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       stereo = new Stereo();
       subCodeLength += stereo.decode(is, true);
+      if (!pcFilter.isParseStereo()) {
+        stereo = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -869,6 +925,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       coords = new Coords();
       subCodeLength += coords.decode(is, true);
+      if (!pcFilter.isParseCoords()) {
+        coords = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -887,7 +946,8 @@ public class PCCompound implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
       subCodeLength += length.decode(is);
-      props = new Props();
+
+      props = new Props(pcFilter.getPropsFilter());
       subCodeLength += props.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;
@@ -899,6 +959,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       stereogroups = new Stereogroups();
       subCodeLength += stereogroups.decode(is, true);
+      if (!pcFilter.isParseStereogroups()) {
+        stereogroups = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -909,6 +972,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       count = new PCCount();
       subCodeLength += count.decode(is, true);
+      if (!pcFilter.isParseCount()) {
+        count = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -919,6 +985,9 @@ public class PCCompound implements Serializable {
       subCodeLength += length.decode(is);
       vbalt = new PCCompounds();
       subCodeLength += vbalt.decode(is, true);
+      if (!pcFilter.isParseVbalt()) {
+        vbalt = null;
+      }
       if (subCodeLength == totalLength) {
         return codeLength;
       }

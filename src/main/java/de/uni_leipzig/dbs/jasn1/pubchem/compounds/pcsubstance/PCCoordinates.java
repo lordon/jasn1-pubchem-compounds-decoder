@@ -625,7 +625,9 @@ public class PCCoordinates implements Serializable {
 
           PCInfoData element = new PCInfoData();
           subCodeLength += element.decode(is, false);
-          seqOf.add(element);
+          if (!element.isDropMe()) {
+            seqOf.add(element);
+          }
         }
       }
       while (subCodeLength < totalLength) {

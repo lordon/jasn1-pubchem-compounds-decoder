@@ -15,6 +15,8 @@ import java.util.List;
 import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.util.PCCompoundFilter;
+
 public class PCCompounds implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -22,9 +24,15 @@ public class PCCompounds implements Serializable {
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
   public byte[] code = null;
   private List<PCCompound> seqOf = null;
+  private PCCompoundFilter pcFilter = null;
 
   public PCCompounds() {
     seqOf = new ArrayList<>();
+  }
+
+  public PCCompounds(final PCCompoundFilter pcFilter) {
+    this();
+    this.pcFilter = pcFilter;
   }
 
   public PCCompounds(final byte[] code) {
@@ -70,13 +78,13 @@ public class PCCompounds implements Serializable {
           return codeLength;
         }
 
-        PCCompound element = new PCCompound();
+        PCCompound element = new PCCompound(pcFilter);
         subCodeLength += element.decode(is, false);
         seqOf.add(element);
       }
     }
     while (subCodeLength < totalLength) {
-      PCCompound element = new PCCompound();
+      PCCompound element = new PCCompound(pcFilter);
       subCodeLength += element.decode(is, true);
       seqOf.add(element);
     }

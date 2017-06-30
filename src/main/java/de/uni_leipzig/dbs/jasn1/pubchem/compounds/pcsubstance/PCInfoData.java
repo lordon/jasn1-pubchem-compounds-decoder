@@ -22,8 +22,13 @@ import org.openmuc.jasn1.ber.types.string.BerVisibleString;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.BerRealString;
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.general.Date;
+import de.uni_leipzig.dbs.jasn1.pubchem.util.PropsFilter;
 
 public class PCInfoData implements Serializable {
+
+  private PropsFilter pcInfoFilter = null;
+
+  private boolean dropMe = false;
 
   private static final long serialVersionUID = 1L;
 
@@ -882,6 +887,10 @@ public class PCInfoData implements Serializable {
   public PCInfoData() {
   }
 
+  public PCInfoData(final PropsFilter filter) {
+    this.pcInfoFilter = filter;
+  }
+
   public PCInfoData(final byte[] code) {
     this.code = code;
   }
@@ -925,7 +934,11 @@ public class PCInfoData implements Serializable {
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
         codeLength += length.decode(is);
         urn = new PCUrn();
+
         subCodeLength += urn.decode(is, true);
+
+        filter();
+
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
           is.read();
@@ -936,6 +949,7 @@ public class PCInfoData implements Serializable {
         subCodeLength += length.decode(is);
         value = new Value();
         int choiceDecodeLength = value.decode(is, null);
+
         if (choiceDecodeLength != 0) {
           subCodeLength += choiceDecodeLength;
           subCodeLength += berTag.decode(is);
@@ -965,6 +979,9 @@ public class PCInfoData implements Serializable {
       subCodeLength += length.decode(is);
       urn = new PCUrn();
       subCodeLength += urn.decode(is, true);
+
+      filter();
+
       subCodeLength += berTag.decode(is);
     } else {
       throw new IOException("Tag does not match the mandatory sequence element tag.");
@@ -972,8 +989,10 @@ public class PCInfoData implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
       subCodeLength += length.decode(is);
-      value = new Value();
+
       subCodeLength += value.decode(is, null);
+      value = new Value();
+
       if (subCodeLength == totalLength) {
         return codeLength;
       }
@@ -981,6 +1000,21 @@ public class PCInfoData implements Serializable {
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
         + ", actual sequence length: " + subCodeLength);
 
+  }
+
+  private void filter() {
+    if (pcInfoFilter != null) {
+      dropMe = pcInfoFilter.skipProperty(urn.getLabel(), urn.getName());
+      if (pcInfoFilter.isSkipMetadata()) {
+        urn.setDatatype(null);
+        urn.setParameters(null);
+        urn.setImplementation(null);
+        urn.setVersion(null);
+        urn.setSoftware(null);
+        urn.setSource(null);
+        urn.setRelease(null);
+      }
+    }
   }
 
   @Override
@@ -1036,6 +1070,10 @@ public class PCInfoData implements Serializable {
 
   public static BerTag getTag() {
     return tag;
+  }
+
+  public boolean isDropMe() {
+    return dropMe;
   }
 
 }
