@@ -80,19 +80,8 @@ public class PCDrawAnnotations implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCBondAnnotation element = new PCBondAnnotation();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -217,19 +206,8 @@ public class PCDrawAnnotations implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        BerInteger element = new BerInteger();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -354,19 +332,8 @@ public class PCDrawAnnotations implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        BerInteger element = new BerInteger();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -531,38 +498,8 @@ public class PCDrawAnnotations implements Serializable {
       codeLength += subCodeLength + 1;
       return codeLength;
     }
-
-    codeLength += totalLength;
-
-    subCodeLength += berTag.decode(is);
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
-      subCodeLength += length.decode(is);
-      annotation = new Annotation();
-      subCodeLength += annotation.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-      subCodeLength += length.decode(is);
-      aid1 = new Aid1();
-      subCodeLength += aid1.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 2)) {
-      subCodeLength += length.decode(is);
-      aid2 = new Aid2();
-      subCodeLength += aid2.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-    }
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
-        + ", actual sequence length: " + subCodeLength);
+        + " But only indefinite length tag supported");
 
   }
 

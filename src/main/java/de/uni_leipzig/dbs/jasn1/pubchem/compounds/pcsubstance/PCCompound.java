@@ -88,19 +88,8 @@ public class PCCompound implements Serializable {
           berTag.decode(is);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCStereoCenter element = new PCStereoCenter();
-        subCodeLength += element.decode(is, null);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -225,19 +214,8 @@ public class PCCompound implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCCoordinates element = new PCCoordinates();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -373,19 +351,8 @@ public class PCCompound implements Serializable {
           berTag.decode(is);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCInfoData element = new PCInfoData(propsFilter);
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -510,19 +477,8 @@ public class PCCompound implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCStereoGroup element = new PCStereoGroup();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -606,7 +562,7 @@ public class PCCompound implements Serializable {
 
   /**
    * If pcFilter is null, a empty Filter will be used.
-   * 
+   *
    * @param pcFilter
    */
   public PCCompound(final PCCompoundFilter pcFilter) {
@@ -866,134 +822,8 @@ public class PCCompound implements Serializable {
       codeLength += subCodeLength + 1;
       return codeLength;
     }
-
-    codeLength += totalLength;
-
-    subCodeLength += berTag.decode(is);
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
-      subCodeLength += length.decode(is);
-      id = new PCCompoundType();
-      subCodeLength += id.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-      subCodeLength += length.decode(is);
-      atoms = new PCAtoms();
-      subCodeLength += atoms.decode(is, true);
-      if (!pcFilter.isParseAtoms()) {
-        atoms = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 2)) {
-      subCodeLength += length.decode(is);
-      bonds = new PCBonds();
-      subCodeLength += bonds.decode(is, true);
-      if (!pcFilter.isParseBonds()) {
-        bonds = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 3)) {
-      subCodeLength += length.decode(is);
-      stereo = new Stereo();
-      subCodeLength += stereo.decode(is, true);
-      if (!pcFilter.isParseStereo()) {
-        stereo = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 4)) {
-      subCodeLength += length.decode(is);
-      coords = new Coords();
-      subCodeLength += coords.decode(is, true);
-      if (!pcFilter.isParseCoords()) {
-        coords = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
-      subCodeLength += length.decode(is);
-      charge = new BerInteger();
-      subCodeLength += charge.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
-      subCodeLength += length.decode(is);
-
-      props = new Props(pcFilter.getPropsFilter());
-      subCodeLength += props.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 7)) {
-      subCodeLength += length.decode(is);
-      stereogroups = new Stereogroups();
-      subCodeLength += stereogroups.decode(is, true);
-      if (!pcFilter.isParseStereogroups()) {
-        stereogroups = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 8)) {
-      subCodeLength += length.decode(is);
-      count = new PCCount();
-      subCodeLength += count.decode(is, true);
-      if (!pcFilter.isParseCount()) {
-        count = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 9)) {
-      subCodeLength += length.decode(is);
-      vbalt = new PCCompounds();
-      subCodeLength += vbalt.decode(is, true);
-      if (!pcFilter.isParseVbalt()) {
-        vbalt = null;
-      }
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-    }
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
-        + ", actual sequence length: " + subCodeLength);
+        + " But only indefinite length tag supported");
 
   }
 

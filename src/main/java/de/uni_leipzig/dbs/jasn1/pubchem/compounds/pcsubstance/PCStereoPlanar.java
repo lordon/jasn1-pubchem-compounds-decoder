@@ -273,88 +273,8 @@ public class PCStereoPlanar implements Serializable {
       codeLength += subCodeLength + 1;
       return codeLength;
     }
-
-    codeLength += totalLength;
-
-    subCodeLength += berTag.decode(is);
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
-      subCodeLength += length.decode(is);
-      left = new BerInteger();
-      subCodeLength += left.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-      subCodeLength += length.decode(is);
-      ltop = new BerInteger();
-      subCodeLength += ltop.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 2)) {
-      subCodeLength += length.decode(is);
-      lbottom = new BerInteger();
-      subCodeLength += lbottom.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 3)) {
-      subCodeLength += length.decode(is);
-      right = new BerInteger();
-      subCodeLength += right.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 4)) {
-      subCodeLength += length.decode(is);
-      rtop = new BerInteger();
-      subCodeLength += rtop.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
-      subCodeLength += length.decode(is);
-      rbottom = new BerInteger();
-      subCodeLength += rbottom.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
-      subCodeLength += length.decode(is);
-      parity = new PCStereoPlanarParityType();
-      subCodeLength += parity.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 7)) {
-      subCodeLength += length.decode(is);
-      type = new PCStereoPlanarType();
-      subCodeLength += type.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-    }
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
-        + ", actual sequence length: " + subCodeLength);
-
+        + " But only indefinite length tag supported");
   }
 
   @Override

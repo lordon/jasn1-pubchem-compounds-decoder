@@ -262,33 +262,8 @@ public class PCCompoundType implements Serializable {
       codeLength += subCodeLength + 1;
       return codeLength;
     }
-
-    codeLength += totalLength;
-
-    if (totalLength == 0) {
-      return codeLength;
-    }
-    subCodeLength += berTag.decode(is);
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
-      subCodeLength += length.decode(is);
-      type = new PCCompoundTypeType();
-      subCodeLength += type.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-      subCodeLength += length.decode(is);
-      id = new Id();
-      subCodeLength += id.decode(is, null);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-    }
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
-        + ", actual sequence length: " + subCodeLength);
+        + " But only indefinite length tag supported");
 
   }
 

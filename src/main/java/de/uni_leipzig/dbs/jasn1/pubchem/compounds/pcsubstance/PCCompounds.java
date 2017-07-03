@@ -83,19 +83,8 @@ public class PCCompounds implements Serializable {
         seqOf.add(element);
       }
     }
-    while (subCodeLength < totalLength) {
-      PCCompound element = new PCCompound(pcFilter);
-      subCodeLength += element.decode(is, true);
-      seqOf.add(element);
-    }
-    if (subCodeLength != totalLength) {
-      throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected " + totalLength
-          + " but has " + subCodeLength);
-
-    }
-    codeLength += subCodeLength;
-
-    return codeLength;
+    throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+        + " But only indefinite length tag supported");
   }
 
   @Override

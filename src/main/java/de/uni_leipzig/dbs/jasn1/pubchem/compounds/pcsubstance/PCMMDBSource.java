@@ -81,19 +81,8 @@ public class PCMMDBSource implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        BerVisibleString element = new BerVisibleString();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -374,73 +363,8 @@ public class PCMMDBSource implements Serializable {
       codeLength += subCodeLength + 1;
       return codeLength;
     }
-
-    codeLength += totalLength;
-
-    subCodeLength += berTag.decode(is);
-    if (berTag.equals(BerInteger.tag)) {
-      mmdbId = new BerInteger();
-      subCodeLength += mmdbId.decode(is, false);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerInteger.tag)) {
-      moleculeId = new BerInteger();
-      subCodeLength += moleculeId.decode(is, false);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(MoleculeName.tag)) {
-      moleculeName = new MoleculeName();
-      subCodeLength += moleculeName.decode(is, false);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerInteger.tag)) {
-      residueId = new BerInteger();
-      subCodeLength += residueId.decode(is, false);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerVisibleString.tag)) {
-      residueName = new BerVisibleString();
-      subCodeLength += residueName.decode(is, false);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerInteger.tag)) {
-      atomId = new BerInteger();
-      subCodeLength += atomId.decode(is, false);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerVisibleString.tag)) {
-      atomName = new BerVisibleString();
-      subCodeLength += atomName.decode(is, false);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-    }
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
-        + ", actual sequence length: " + subCodeLength);
+        + " But only indefinite length tag supported");
   }
 
   @Override

@@ -80,19 +80,8 @@ public class PCCoordinates implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCCoordinateType element = new PCCoordinateType();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -217,19 +206,8 @@ public class PCCoordinates implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        BerInteger element = new BerInteger();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -354,19 +332,8 @@ public class PCCoordinates implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCConformer element = new PCConformer();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -491,19 +458,8 @@ public class PCCoordinates implements Serializable {
           seqOf.add(element);
         }
       }
-      while (subCodeLength < totalLength) {
-        PCAtomString element = new PCAtomString();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -630,19 +586,8 @@ public class PCCoordinates implements Serializable {
           }
         }
       }
-      while (subCodeLength < totalLength) {
-        PCInfoData element = new PCInfoData();
-        subCodeLength += element.decode(is, true);
-        seqOf.add(element);
-      }
-      if (subCodeLength != totalLength) {
-        throw new IOException("Decoded SequenceOf or SetOf has wrong length. Expected "
-            + totalLength + " but has " + subCodeLength);
-
-      }
-      codeLength += subCodeLength;
-
-      return codeLength;
+      throw new IOException("Unexpected end of sequence, length tag: " + totalLength
+          + " But only indefinite length tag supported");
     }
 
     @Override
@@ -847,62 +792,8 @@ public class PCCoordinates implements Serializable {
       codeLength += subCodeLength + 1;
       return codeLength;
     }
-
-    codeLength += totalLength;
-
-    subCodeLength += berTag.decode(is);
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
-      subCodeLength += length.decode(is);
-      type = new Type();
-      subCodeLength += type.decode(is, true);
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
-      subCodeLength += length.decode(is);
-      aid = new Aid();
-      subCodeLength += aid.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    } else {
-      throw new IOException("Tag does not match the mandatory sequence element tag.");
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 2)) {
-      subCodeLength += length.decode(is);
-      conformers = new Conformers();
-      subCodeLength += conformers.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 3)) {
-      subCodeLength += length.decode(is);
-      atomlabels = new Atomlabels();
-      subCodeLength += atomlabels.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-      subCodeLength += berTag.decode(is);
-    }
-
-    if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 4)) {
-      subCodeLength += length.decode(is);
-      data = new Data();
-      subCodeLength += data.decode(is, true);
-      if (subCodeLength == totalLength) {
-        return codeLength;
-      }
-    }
     throw new IOException("Unexpected end of sequence, length tag: " + totalLength
-        + ", actual sequence length: " + subCodeLength);
-
+        + " But only indefinite length tag supported");
   }
 
   @Override
