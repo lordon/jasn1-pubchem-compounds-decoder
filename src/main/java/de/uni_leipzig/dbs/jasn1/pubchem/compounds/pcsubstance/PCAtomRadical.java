@@ -13,7 +13,40 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
+
 public class PCAtomRadical implements Serializable {
+
+  static class PCAtomRadicalType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    static final int[] states = { 1, 2, 3, 4, 5, 6, 7, 8, 255 };
+
+    static final String[] stateStrings = { "singlet : Open-Shell Singlet",
+        "doublet : Open-Shell Doublet", "triplet : Open-Shell Triplet",
+        "quartet : Open-Shell Quartet", "quintet : Open-Shell Quintet",
+        "hextet : Open-Shell Hextet", "heptet : Open-Shell Quintet", "octet : Open-Shell Octet",
+        "none : Closed-Shell Singlet" };
+
+    public PCAtomRadicalType() {
+    }
+
+    public PCAtomRadicalType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
 
   private static final long serialVersionUID = 1L;
 
@@ -21,7 +54,7 @@ public class PCAtomRadical implements Serializable {
 
   public byte[] code = null;
   private BerInteger aid = null;
-  private BerInteger type = null;
+  private PubChemTypedBerInteger type = null;
 
   public PCAtomRadical() {
   }
@@ -39,7 +72,7 @@ public class PCAtomRadical implements Serializable {
   }
 
   public void setType(final BerInteger type) {
-    this.type = type;
+    this.type = new PCAtomRadicalType(type);
   }
 
   public BerInteger getType() {
@@ -79,7 +112,7 @@ public class PCAtomRadical implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
         codeLength += length.decode(is);
-        type = new BerInteger();
+        type = new PCAtomRadicalType();
         subCodeLength += type.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -112,7 +145,7 @@ public class PCAtomRadical implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
       subCodeLength += length.decode(is);
-      type = new BerInteger();
+      type = new PCAtomRadicalType();
       subCodeLength += type.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;

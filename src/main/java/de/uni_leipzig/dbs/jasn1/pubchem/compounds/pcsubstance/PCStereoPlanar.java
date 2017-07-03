@@ -13,7 +13,63 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
+
 public class PCStereoPlanar implements Serializable {
+
+  static class PCStereoPlanarParityType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    static final int[] states = { 1, 2, 3, 255 };
+
+    static final String[] stateStrings = { "same", "opposite", "any", "unknown" };
+
+    public PCStereoPlanarParityType() {
+    }
+
+    public PCStereoPlanarParityType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
+
+  static class PCStereoPlanarType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    static final int[] states = { 1, 2 };
+
+    static final String[] stateStrings = { "planar", "cumulenic" };
+
+    public PCStereoPlanarType() {
+    }
+
+    public PCStereoPlanarType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
 
   private static final long serialVersionUID = 1L;
 
@@ -26,8 +82,8 @@ public class PCStereoPlanar implements Serializable {
   private BerInteger right = null;
   private BerInteger rtop = null;
   private BerInteger rbottom = null;
-  private BerInteger parity = null;
-  private BerInteger type = null;
+  private PCStereoPlanarParityType parity = null;
+  private PCStereoPlanarType type = null;
 
   public PCStereoPlanar() {
   }
@@ -85,7 +141,7 @@ public class PCStereoPlanar implements Serializable {
   }
 
   public void setParity(final BerInteger parity) {
-    this.parity = parity;
+    this.parity = new PCStereoPlanarParityType(parity);
   }
 
   public BerInteger getParity() {
@@ -93,7 +149,7 @@ public class PCStereoPlanar implements Serializable {
   }
 
   public void setType(final BerInteger type) {
-    this.type = type;
+    this.type = new PCStereoPlanarType(type);
   }
 
   public BerInteger getType() {
@@ -188,7 +244,7 @@ public class PCStereoPlanar implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
         codeLength += length.decode(is);
-        parity = new BerInteger();
+        parity = new PCStereoPlanarParityType();
         subCodeLength += parity.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -199,7 +255,7 @@ public class PCStereoPlanar implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 7)) {
         codeLength += length.decode(is);
-        type = new BerInteger();
+        type = new PCStereoPlanarType();
         subCodeLength += type.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -280,7 +336,7 @@ public class PCStereoPlanar implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
       subCodeLength += length.decode(is);
-      parity = new BerInteger();
+      parity = new PCStereoPlanarParityType();
       subCodeLength += parity.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;
@@ -290,7 +346,7 @@ public class PCStereoPlanar implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 7)) {
       subCodeLength += length.decode(is);
-      type = new BerInteger();
+      type = new PCStereoPlanarType();
       subCodeLength += type.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;

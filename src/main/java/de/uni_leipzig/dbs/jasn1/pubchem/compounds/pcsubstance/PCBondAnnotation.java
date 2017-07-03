@@ -6,11 +6,22 @@ package de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance;
 
 import java.math.BigInteger;
 
-import org.openmuc.jasn1.ber.types.BerInteger;
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
-public class PCBondAnnotation extends BerInteger {
+public class PCBondAnnotation extends PubChemTypedBerInteger {
 
   private static final long serialVersionUID = 1L;
+
+  public final static int[] states = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 255 };
+
+  public final static String[] stateStrings = { "crossed : Double Bond that can be both Cis/Trans",
+      "dashed : Hydrogen-Bond (3D Only?)", "wavy : Unknown Stereochemistry",
+      "dotted : Complex/Fractional", "wedge-up : Above-Plane", "wedge-down : Below-Plane",
+      "arrow : Dative", "aromatic : Aromatic", "resonance : Resonance",
+      "bold : Fat Bond (Non-Specific User Interpreted Information)",
+      "fischer : Interpret Bond Stereo using Fischer Conventions",
+      "closeContact : Identification of Atom-Atom Close Contacts (3D Only)",
+      "unknown : Unspecified or Unknown Atom-Atom Annotation" };
 
   public PCBondAnnotation() {
   }
@@ -29,6 +40,18 @@ public class PCBondAnnotation extends BerInteger {
 
   public static long getSerialversionuid() {
     return serialVersionUID;
+  }
+
+  @Override
+  public int[] getStates() {
+
+    return states;
+  }
+
+  @Override
+  public String[] getStateStrings() {
+
+    return stateStrings;
   }
 
 }

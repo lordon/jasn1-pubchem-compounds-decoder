@@ -13,7 +13,63 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
+
 public class PCStereoTetrahedral implements Serializable {
+
+  static class PCStereoTetrahedralParityType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    static final int[] states = { 1, 2, 3, 255 };
+
+    static final String[] stateStrings = { "clockwise", " counterclockwise", "any", "unknown" };
+
+    public PCStereoTetrahedralParityType() {
+    }
+
+    public PCStereoTetrahedralParityType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
+
+  static class PCStereoTetrahedralType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    static final int[] states = { 1, 2, 3 };
+
+    static final String[] stateStrings = { "tetrahedral", "cumulenic", "biaryl" };
+
+    public PCStereoTetrahedralType() {
+    }
+
+    public PCStereoTetrahedralType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
 
   private static final long serialVersionUID = 1L;
 
@@ -25,8 +81,8 @@ public class PCStereoTetrahedral implements Serializable {
   private BerInteger top = null;
   private BerInteger bottom = null;
   private BerInteger below = null;
-  private BerInteger parity = null;
-  private BerInteger type = null;
+  private PCStereoTetrahedralParityType parity = null;
+  private PCStereoTetrahedralType type = null;
 
   public PCStereoTetrahedral() {
   }
@@ -76,7 +132,7 @@ public class PCStereoTetrahedral implements Serializable {
   }
 
   public void setParity(final BerInteger parity) {
-    this.parity = parity;
+    this.parity = new PCStereoTetrahedralParityType(parity);
   }
 
   public BerInteger getParity() {
@@ -84,7 +140,7 @@ public class PCStereoTetrahedral implements Serializable {
   }
 
   public void setType(final BerInteger type) {
-    this.type = type;
+    this.type = new PCStereoTetrahedralType(type);
   }
 
   public BerInteger getType() {
@@ -168,7 +224,7 @@ public class PCStereoTetrahedral implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
         codeLength += length.decode(is);
-        parity = new BerInteger();
+        parity = new PCStereoTetrahedralParityType();
         subCodeLength += parity.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -179,7 +235,7 @@ public class PCStereoTetrahedral implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
         codeLength += length.decode(is);
-        type = new BerInteger();
+        type = new PCStereoTetrahedralType();
         subCodeLength += type.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -251,7 +307,7 @@ public class PCStereoTetrahedral implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
       subCodeLength += length.decode(is);
-      parity = new BerInteger();
+      parity = new PCStereoTetrahedralParityType();
       subCodeLength += parity.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;
@@ -261,7 +317,7 @@ public class PCStereoTetrahedral implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 6)) {
       subCodeLength += length.decode(is);
-      type = new BerInteger();
+      type = new PCStereoTetrahedralType();
       subCodeLength += type.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;

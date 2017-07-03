@@ -16,7 +16,38 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
+
 public class PCStereoGroup implements Serializable {
+
+  static class PCStereoGroupType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    public final static int[] states = { 1, 2, 3, 255 };
+
+    public final static String[] stateStrings = { "absolute : Absolute configuration is known",
+        "or : Relative configuration is known (absolute configuration is unknown)",
+        "and : Mixture of stereoisomers", "unknown : Unknown configuration type" };
+
+    public PCStereoGroupType() {
+    }
+
+    public PCStereoGroupType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
 
   private static final long serialVersionUID = 1L;
 
@@ -160,7 +191,7 @@ public class PCStereoGroup implements Serializable {
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
 
   public byte[] code = null;
-  private BerInteger type = null;
+  private PCStereoGroupType type = null;
   private Aid aid = null;
 
   public PCStereoGroup() {
@@ -171,7 +202,7 @@ public class PCStereoGroup implements Serializable {
   }
 
   public void setType(final BerInteger type) {
-    this.type = type;
+    this.type = new PCStereoGroupType(type);
   }
 
   public BerInteger getType() {
@@ -208,7 +239,7 @@ public class PCStereoGroup implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
         codeLength += length.decode(is);
-        type = new BerInteger();
+        type = new PCStereoGroupType();
         subCodeLength += type.decode(is, true);
         subCodeLength += berTag.decode(is);
 
@@ -245,7 +276,7 @@ public class PCStereoGroup implements Serializable {
     subCodeLength += berTag.decode(is);
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
       subCodeLength += length.decode(is);
-      type = new BerInteger();
+      type = new PCStereoGroupType();
       subCodeLength += type.decode(is, true);
       subCodeLength += berTag.decode(is);
     } else {

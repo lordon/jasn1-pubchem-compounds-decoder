@@ -13,7 +13,40 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
+
 public class PCStereoSquarePlanar implements Serializable {
+
+  static class PCStereoSquarePlanarType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    static final int[] states = { 1, 2, 3, 4, 255 };
+
+    static final String[] stateStrings = {
+        "u-shape :   U shaped isomer (labove-lbelow-rbelow-rabove)",
+        "z-shape :   Z shaped isomer (labove-rabove-lbelow-rbelow)",
+        "x-shape :   X shaped isomer (labove-rbelow-rabove-lbelow)",
+        "any :   Nonspecific mixture of isomers", "unknown : " };
+
+    public PCStereoSquarePlanarType() {
+    }
+
+    public PCStereoSquarePlanarType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
 
   private static final long serialVersionUID = 1L;
 
@@ -25,7 +58,7 @@ public class PCStereoSquarePlanar implements Serializable {
   private BerInteger rbelow = null;
   private BerInteger labove = null;
   private BerInteger rabove = null;
-  private BerInteger parity = null;
+  private PCStereoSquarePlanarType parity = null;
 
   public PCStereoSquarePlanar() {
   }
@@ -75,7 +108,7 @@ public class PCStereoSquarePlanar implements Serializable {
   }
 
   public void setParity(final BerInteger parity) {
-    this.parity = parity;
+    this.parity = new PCStereoSquarePlanarType(parity);
   }
 
   public BerInteger getParity() {
@@ -159,7 +192,7 @@ public class PCStereoSquarePlanar implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
         codeLength += length.decode(is);
-        parity = new BerInteger();
+        parity = new PCStereoSquarePlanarType();
         subCodeLength += parity.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -231,7 +264,7 @@ public class PCStereoSquarePlanar implements Serializable {
 
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 5)) {
       subCodeLength += length.decode(is);
-      parity = new BerInteger();
+      parity = new PCStereoSquarePlanarType();
       subCodeLength += parity.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;

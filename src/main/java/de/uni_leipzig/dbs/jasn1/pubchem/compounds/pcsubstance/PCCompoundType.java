@@ -13,7 +13,42 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
+
 public class PCCompoundType implements Serializable {
+
+  static class PCCompoundTypeType extends PubChemTypedBerInteger {
+
+    private static final long serialVersionUID = 1L;
+
+    public final static int[] states = { 0, 1, 2, 3, 4, 5, 6, 255 };
+
+    public final static String[] stateStrings = { "deposited : Original Deposited Compound ",
+        "standardized : Standardized Form of a Deposited Compound",
+        "component : Component of a Standardized Compound",
+        "neutralized : Neutralized Form of a Standardized Compound",
+        "mixture : Substance that is a component of a mixture",
+        "tautomer : Predicted Tautomer Form", "pka-state : Predicted Ionized pKa Form",
+        "unknown : Unknown Compound Type" };
+
+    public PCCompoundTypeType() {
+    }
+
+    public PCCompoundTypeType(final BerInteger berInteger) {
+      super(berInteger);
+    }
+
+    @Override
+    public int[] getStates() {
+      return states;
+    }
+
+    @Override
+    public String[] getStateStrings() {
+      return stateStrings;
+    }
+
+  }
 
   private static final long serialVersionUID = 1L;
 
@@ -143,7 +178,7 @@ public class PCCompoundType implements Serializable {
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
 
   public byte[] code = null;
-  private BerInteger type = null;
+  private PCCompoundTypeType type = null;
   private Id id = null;
 
   public PCCompoundType() {
@@ -154,7 +189,7 @@ public class PCCompoundType implements Serializable {
   }
 
   public void setType(final BerInteger type) {
-    this.type = type;
+    this.type = new PCCompoundTypeType(type);
   }
 
   public BerInteger getType() {
@@ -191,7 +226,7 @@ public class PCCompoundType implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
         codeLength += length.decode(is);
-        type = new BerInteger();
+        type = new PCCompoundTypeType();
         subCodeLength += type.decode(is, true);
         subCodeLength += berTag.decode(is);
         if (length.val == -1) {
@@ -236,7 +271,7 @@ public class PCCompoundType implements Serializable {
     subCodeLength += berTag.decode(is);
     if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 0)) {
       subCodeLength += length.decode(is);
-      type = new BerInteger();
+      type = new PCCompoundTypeType();
       subCodeLength += type.decode(is, true);
       if (subCodeLength == totalLength) {
         return codeLength;

@@ -6,9 +6,16 @@ package de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance;
 
 import java.math.BigInteger;
 
-import org.openmuc.jasn1.ber.types.BerInteger;
+import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
-public class PCBondType extends BerInteger {
+public class PCBondType extends PubChemTypedBerInteger {
+
+  public final static int[] states = { 1, 2, 3, 4, 5, 6, 7, 255 };
+
+  public final static String[] stateStrings = { "single : Single Bond", "double : Double Bond",
+      "triple : Triple Bond", "quadruple : Quadruple Bond", "dative : Dative Bond",
+      "complex : Complex Bond", "ionic : Ionic Bond",
+      "unknown : Unknown/Unspecified Connectivity" };
 
   private static final long serialVersionUID = 1L;
 
@@ -29,6 +36,16 @@ public class PCBondType extends BerInteger {
 
   public static long getSerialversionuid() {
     return serialVersionUID;
+  }
+
+  @Override
+  public int[] getStates() {
+    return states;
+  }
+
+  @Override
+  public String[] getStateStrings() {
+    return stateStrings;
   }
 
 }
