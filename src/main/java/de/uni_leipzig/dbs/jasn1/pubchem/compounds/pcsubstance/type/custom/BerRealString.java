@@ -7,12 +7,11 @@ import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.string.BerUniversalString;
 
 /**
- * Created by elias on 14.06.17.
+ * PubChem stores in its ASN.1 files under the REAL tag an ASCII encoded form of real values,
+ * instead of the REAL encoding specified in the ASN.1 definition.
  */
 public class BerRealString extends BerUniversalString {
-  /**
-   *
-   */
+
   private static final long serialVersionUID = -754028716182264770L;
   public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.PRIMITIVE,
       BerTag.REAL_TAG);

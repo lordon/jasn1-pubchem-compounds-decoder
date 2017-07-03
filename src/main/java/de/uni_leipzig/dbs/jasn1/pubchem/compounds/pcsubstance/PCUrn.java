@@ -13,6 +13,9 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.string.BerVisibleString;
 
+/**
+ * Universal Resource Name Provides explicit source information on derived or calculated data
+ */
 public class PCUrn implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -41,6 +44,9 @@ public class PCUrn implements Serializable {
     this.label = label;
   }
 
+  /**
+   * @return Generic Name or Label for Display [e.g., "Log P"]
+   */
   public BerVisibleString getLabel() {
     return label;
   }
@@ -49,6 +55,9 @@ public class PCUrn implements Serializable {
     this.name = name;
   }
 
+  /**
+   * @return Qualified Name [e.g., "XlogP"]
+   */
   public BerVisibleString getName() {
     return name;
   }
@@ -57,6 +66,9 @@ public class PCUrn implements Serializable {
     this.datatype = datatype;
   }
 
+  /**
+   * @return Specific Data Type of Value [e.g., binary]
+   */
   public PCUrnDataType getDatatype() {
     return datatype;
   }
@@ -65,6 +77,9 @@ public class PCUrn implements Serializable {
     this.parameters = parameters;
   }
 
+  /**
+   * @return Implementation Parameter [e.g., "metal=0"]
+   */
   public BerVisibleString getParameters() {
     return parameters;
   }
@@ -73,6 +88,9 @@ public class PCUrn implements Serializable {
     this.implementation = implementation;
   }
 
+  /**
+   * @return Implementation Name [e.g., "E_XlogP"]
+   */
   public BerVisibleString getImplementation() {
     return implementation;
   }
@@ -81,6 +99,9 @@ public class PCUrn implements Serializable {
     this.version = version;
   }
 
+  /**
+   * @return Implementation Version [e.g., "3.317"]
+   */
   public BerVisibleString getVersion() {
     return version;
   }
@@ -89,6 +110,9 @@ public class PCUrn implements Serializable {
     this.software = software;
   }
 
+  /**
+   * @return Implementation Software [e.g., "Cactvs"]
+   */
   public BerVisibleString getSoftware() {
     return software;
   }
@@ -97,6 +121,9 @@ public class PCUrn implements Serializable {
     this.source = source;
   }
 
+  /**
+   * @return Implementation Organization [e.g., "xemistry.com"]
+   */
   public BerVisibleString getSource() {
     return source;
   }
@@ -105,6 +132,9 @@ public class PCUrn implements Serializable {
     this.release = release;
   }
 
+  /**
+   * @return NCBI Implementation Release [e.g., "10.25.2005"]
+   */
   public BerVisibleString getRelease() {
     return release;
   }

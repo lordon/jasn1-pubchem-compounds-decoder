@@ -11,6 +11,9 @@ import java.io.Serializable;
 import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 
+/**
+ * Allowed Stereogenic Center Types [Using IUPAC Stereogenic Center recommendations and terminology]
+ */
 public class PCStereoCenter implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -35,6 +38,9 @@ public class PCStereoCenter implements Serializable {
     this.tetrahedral = tetrahedral;
   }
 
+  /**
+   * @return Tetrahedral (SP3) StereoCenter
+   */
   public PCStereoTetrahedral getTetrahedral() {
     return tetrahedral;
   }
@@ -43,6 +49,9 @@ public class PCStereoCenter implements Serializable {
     this.planar = planar;
   }
 
+  /**
+   * @return Planar (SP2) StereoCenter
+   */
   public PCStereoPlanar getPlanar() {
     return planar;
   }
@@ -51,6 +60,9 @@ public class PCStereoCenter implements Serializable {
     this.squareplanar = squareplanar;
   }
 
+  /**
+   * @return Square Planar (SP4) StereoCenter
+   */
   public PCStereoSquarePlanar getSquareplanar() {
     return squareplanar;
   }
@@ -59,6 +71,9 @@ public class PCStereoCenter implements Serializable {
     this.octahedral = octahedral;
   }
 
+  /**
+   * @return Octahedral (OC-6) / Square Pyramid (SPY-5) StereoCenters
+   */
   public PCStereoOctahedral getOctahedral() {
     return octahedral;
   }
@@ -67,6 +82,9 @@ public class PCStereoCenter implements Serializable {
     this.bipyramid = bipyramid;
   }
 
+  /**
+   * @return Trigonal BiPyramid (TBPY-4 and TBPY-5) StereoCenters
+   */
   public PCStereoTrigonalBiPyramid getBipyramid() {
     return bipyramid;
   }
@@ -75,6 +93,9 @@ public class PCStereoCenter implements Serializable {
     this.tshape = tshape;
   }
 
+  /**
+   * @return T-Shaped (TS-3) StereoCenters
+   */
   public PCStereoTShape getTshape() {
     return tshape;
   }
@@ -83,6 +104,9 @@ public class PCStereoCenter implements Serializable {
     this.pentagonal = pentagonal;
   }
 
+  /**
+   * @return Pentagonal BiPyramid (PBPY-7) StereoCenters
+   */
   public PCStereoPentagonalBiPyramid getPentagonal() {
     return pentagonal;
   }

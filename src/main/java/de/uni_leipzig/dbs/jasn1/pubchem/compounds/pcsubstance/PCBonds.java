@@ -16,6 +16,9 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * Bond Description Information (in Parallel Arrays)
+ */
 public class PCBonds implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -416,6 +419,9 @@ public class PCBonds implements Serializable {
     this.aid1 = aid1;
   }
 
+  /**
+   * @return Atom1 Identifier (vector)
+   */
   public Aid1 getAid1() {
     return aid1;
   }
@@ -424,6 +430,9 @@ public class PCBonds implements Serializable {
     this.aid2 = aid2;
   }
 
+  /**
+   * @return Atom2 Identifier (vector)
+   */
   public Aid2 getAid2() {
     return aid2;
   }
@@ -432,6 +441,9 @@ public class PCBonds implements Serializable {
     this.order = order;
   }
 
+  /**
+   * @return Bond Type Information (vector)
+   */
   public Order getOrder() {
     return order;
   }

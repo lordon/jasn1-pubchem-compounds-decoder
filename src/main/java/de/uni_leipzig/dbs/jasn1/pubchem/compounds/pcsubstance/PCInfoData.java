@@ -24,6 +24,9 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.BerRea
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.general.Date;
 import de.uni_leipzig.dbs.jasn1.pubchem.util.PropsFilter;
 
+/**
+ * Compound Description/Descriptor Data
+ */
 public class PCInfoData implements Serializable {
 
   private PropsFilter pcInfoFilter = null;
@@ -855,6 +858,9 @@ public class PCInfoData implements Serializable {
     this.urn = urn;
   }
 
+  /**
+   * @return Universal Resource Name [for Value Qualification]
+   */
   public PCUrn getUrn() {
     return urn;
   }
@@ -863,6 +869,9 @@ public class PCInfoData implements Serializable {
     this.value = value;
   }
 
+  /**
+   * @return Data Value
+   */
   public Value getValue() {
     return value;
   }

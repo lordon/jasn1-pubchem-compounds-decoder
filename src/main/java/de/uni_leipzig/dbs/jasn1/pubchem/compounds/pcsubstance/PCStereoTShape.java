@@ -13,6 +13,10 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * TShaped (TS3) StereoCenters [Using IUPAC Stereogenic Center recommendations and terminology]
+ * [Note: "1" can be used for the Atom Identifier to represent a lonepair or implicit hydrogen]
+ */
 public class PCStereoTShape implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -36,6 +40,9 @@ public class PCStereoTShape implements Serializable {
     this.center = center;
   }
 
+  /**
+   * @return Atom ID of Atom Center
+   */
   public BerInteger getCenter() {
     return center;
   }
@@ -44,6 +51,9 @@ public class PCStereoTShape implements Serializable {
     this.top = top;
   }
 
+  /**
+   * @return Atom ID of Atom In-Plane and at the Top
+   */
   public BerInteger getTop() {
     return top;
   }
@@ -52,6 +62,9 @@ public class PCStereoTShape implements Serializable {
     this.bottom = bottom;
   }
 
+  /**
+   * @return Atom ID of Atom In-Plane and at the Bottom
+   */
   public BerInteger getBottom() {
     return bottom;
   }
@@ -60,6 +73,9 @@ public class PCStereoTShape implements Serializable {
     this.above = above;
   }
 
+  /**
+   * @return Atom ID of Atom Above the Plane
+   */
   public BerInteger getAbove() {
     return above;
   }

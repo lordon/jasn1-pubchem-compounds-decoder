@@ -16,10 +16,16 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * Atom Information (in Parallel Arrays)
+ */
 public class PCAtoms implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Atom Identifiers (vector)
+   */
   public static class Aid implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -146,6 +152,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * Atomic Numbers (vector)
+   */
   public static class Element implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -272,6 +281,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * Atom labels
+   */
   public static class Label implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -398,6 +410,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * Isotopic Information
+   */
   public static class Isotope implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -524,6 +539,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * Formal Charges
+   */
   public static class Charge implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -650,6 +668,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * Radical Information
+   */
   public static class Radical implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -776,6 +797,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * E.g. identity of MMDB "R" groups
+   */
   public static class Source implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -902,6 +926,9 @@ public class PCAtoms implements Serializable {
 
   }
 
+  /**
+   * Atom Comments
+   */
   public static class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -1051,6 +1078,9 @@ public class PCAtoms implements Serializable {
     this.aid = aid;
   }
 
+  /**
+   * @return Atom Identifiers (vector)
+   */
   public Aid getAid() {
     return aid;
   }
@@ -1059,6 +1089,9 @@ public class PCAtoms implements Serializable {
     this.element = element;
   }
 
+  /**
+   * @return Atomic Numbers (vector)
+   */
   public Element getElement() {
     return element;
   }
@@ -1067,6 +1100,9 @@ public class PCAtoms implements Serializable {
     this.label = label;
   }
 
+  /**
+   * @return Atom labels
+   */
   public Label getLabel() {
     return label;
   }
@@ -1075,6 +1111,9 @@ public class PCAtoms implements Serializable {
     this.isotope = isotope;
   }
 
+  /**
+   * @return Isotopic Information
+   */
   public Isotope getIsotope() {
     return isotope;
   }
@@ -1083,6 +1122,9 @@ public class PCAtoms implements Serializable {
     this.charge = charge;
   }
 
+  /**
+   * @return Formal Charges
+   */
   public Charge getCharge() {
     return charge;
   }
@@ -1091,6 +1133,9 @@ public class PCAtoms implements Serializable {
     this.radical = radical;
   }
 
+  /**
+   * @return Radical Information
+   */
   public Radical getRadical() {
     return radical;
   }
@@ -1099,6 +1144,9 @@ public class PCAtoms implements Serializable {
     this.source = source;
   }
 
+  /**
+   * @return E.g. identity of MMDB "R" groups
+   */
   public Source getSource() {
     return source;
   }
@@ -1107,6 +1155,9 @@ public class PCAtoms implements Serializable {
     this.comment = comment;
   }
 
+  /**
+   * @return Atom Comments
+   */
   public Comment getComment() {
     return comment;
   }

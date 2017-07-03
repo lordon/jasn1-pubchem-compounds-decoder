@@ -18,6 +18,13 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * List of atom identifiers which are in a common stereochemistry group. All atoms in this group
+ * possess the characteristic of the type specified. The convention adopted is intended to be
+ * compatible with MDL's Enhanced Stereochemical Representation white paper. An atom can only be
+ * member of a single stereo group, and all atoms in a stereo group must have a stereo descriptor.
+ * Stereogroups only apply to stereocenters that can have parity.
+ */
 public class PCStereoGroup implements Serializable {
 
   static class PCStereoGroupType extends PubChemTypedBerInteger {
@@ -194,7 +201,7 @@ public class PCStereoGroup implements Serializable {
     this.type = new PCStereoGroupType(type);
   }
 
-  public BerInteger getType() {
+  public PCStereoGroupType getType() {
     return type;
   }
 

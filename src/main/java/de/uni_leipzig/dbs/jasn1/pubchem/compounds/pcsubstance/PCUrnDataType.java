@@ -8,6 +8,10 @@ import java.math.BigInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * URN Data Type Provides the ability to use more specific data types than that directly provided by
+ * ASN.1. Provides for more specific validation of specified data.
+ */
 public class PCUrnDataType extends PubChemTypedBerInteger {
 
   static final int[] states = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 255 };

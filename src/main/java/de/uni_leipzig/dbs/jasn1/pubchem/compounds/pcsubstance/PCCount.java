@@ -13,6 +13,9 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * Compound Record
+ */
 public class PCCount implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -42,6 +45,9 @@ public class PCCount implements Serializable {
     this.heavyAtom = heavyAtom;
   }
 
+  /**
+   * @return Total count of non-Hydrogen (Heavy) Atoms
+   */
   public BerInteger getHeavyAtom() {
     return heavyAtom;
   }
@@ -50,6 +56,9 @@ public class PCCount implements Serializable {
     this.atomChiral = atomChiral;
   }
 
+  /**
+   * @return Total count of (SP3) Chiral Atoms
+   */
   public BerInteger getAtomChiral() {
     return atomChiral;
   }
@@ -58,6 +67,9 @@ public class PCCount implements Serializable {
     this.atomChiralDef = atomChiralDef;
   }
 
+  /**
+   * @return Total count of Defined (SP3) Chiral Atoms
+   */
   public BerInteger getAtomChiralDef() {
     return atomChiralDef;
   }
@@ -66,6 +78,9 @@ public class PCCount implements Serializable {
     this.atomChiralUndef = atomChiralUndef;
   }
 
+  /**
+   * @return Total count of Undefined (SP3) Chiral Atoms
+   */
   public BerInteger getAtomChiralUndef() {
     return atomChiralUndef;
   }
@@ -74,6 +89,9 @@ public class PCCount implements Serializable {
     this.bondChiral = bondChiral;
   }
 
+  /**
+   * @return Total count of (SP2) Chiral Bonds
+   */
   public BerInteger getBondChiral() {
     return bondChiral;
   }
@@ -82,6 +100,9 @@ public class PCCount implements Serializable {
     this.bondChiralDef = bondChiralDef;
   }
 
+  /**
+   * @return Total count of (SP2) Defined Chiral Bonds
+   */
   public BerInteger getBondChiralDef() {
     return bondChiralDef;
   }
@@ -90,6 +111,9 @@ public class PCCount implements Serializable {
     this.bondChiralUndef = bondChiralUndef;
   }
 
+  /**
+   * @return Total count of (SP2) Undefined Chiral Bonds
+   */
   public BerInteger getBondChiralUndef() {
     return bondChiralUndef;
   }
@@ -98,6 +122,9 @@ public class PCCount implements Serializable {
     this.isotopeAtom = isotopeAtom;
   }
 
+  /**
+   * @return Total count of Atoms with Isotopic Information
+   */
   public BerInteger getIsotopeAtom() {
     return isotopeAtom;
   }
@@ -106,6 +133,9 @@ public class PCCount implements Serializable {
     this.covalentUnit = covalentUnit;
   }
 
+  /**
+   * @return Total count of covalently-bonded units in the record
+   */
   public BerInteger getCovalentUnit() {
     return covalentUnit;
   }
@@ -114,6 +144,9 @@ public class PCCount implements Serializable {
     this.tautomers = tautomers;
   }
 
+  /**
+   * @return Number of possible tautomers (Max. 999)
+   */
   public BerInteger getTautomers() {
     return tautomers;
   }

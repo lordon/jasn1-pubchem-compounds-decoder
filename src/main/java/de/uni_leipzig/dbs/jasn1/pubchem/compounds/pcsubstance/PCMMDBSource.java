@@ -17,6 +17,9 @@ import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 import org.openmuc.jasn1.ber.types.string.BerVisibleString;
 
+/**
+ * MMDB Source Record detailing specific location or part of an MMDB Record
+ */
 public class PCMMDBSource implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -169,6 +172,9 @@ public class PCMMDBSource implements Serializable {
     this.mmdbId = mmdbId;
   }
 
+  /**
+   * @return MMDB Record ID
+   */
   public BerInteger getMmdbId() {
     return mmdbId;
   }
@@ -177,6 +183,9 @@ public class PCMMDBSource implements Serializable {
     this.moleculeId = moleculeId;
   }
 
+  /**
+   * @return MMDB Molecule ID
+   */
   public BerInteger getMoleculeId() {
     return moleculeId;
   }
@@ -185,6 +194,9 @@ public class PCMMDBSource implements Serializable {
     this.moleculeName = moleculeName;
   }
 
+  /**
+   * @return MMDB Molecule Name
+   */
   public MoleculeName getMoleculeName() {
     return moleculeName;
   }
@@ -193,6 +205,9 @@ public class PCMMDBSource implements Serializable {
     this.residueId = residueId;
   }
 
+  /**
+   * @return Residue ID
+   */
   public BerInteger getResidueId() {
     return residueId;
   }
@@ -201,6 +216,9 @@ public class PCMMDBSource implements Serializable {
     this.residueName = residueName;
   }
 
+  /**
+   * @return Residue Name
+   */
   public BerVisibleString getResidueName() {
     return residueName;
   }
@@ -209,6 +227,9 @@ public class PCMMDBSource implements Serializable {
     this.atomId = atomId;
   }
 
+  /**
+   * @return Atom ID
+   */
   public BerInteger getAtomId() {
     return atomId;
   }
@@ -217,6 +238,9 @@ public class PCMMDBSource implements Serializable {
     this.atomName = atomName;
   }
 
+  /**
+   * @return Atom Name
+   */
   public BerVisibleString getAtomName() {
     return atomName;
   }

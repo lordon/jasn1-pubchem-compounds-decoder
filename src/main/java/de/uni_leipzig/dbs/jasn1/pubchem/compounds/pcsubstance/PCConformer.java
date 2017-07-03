@@ -17,6 +17,11 @@ import org.openmuc.jasn1.ber.BerTag;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.BerRealString;
 
+/**
+ * Drawing/Conformer Definition (in Parallel Arrays, synchronized to aid integer list) 3D
+ * coordinates are specified in a right-handed coordinate system. For 2D plots, Y axis leads
+ * upwards.
+ */
 public class PCConformer implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -547,6 +552,9 @@ public class PCConformer implements Serializable {
     this.x = x;
   }
 
+  /**
+   * @return X Coordinates (vector)
+   */
   public X getX() {
     return x;
   }
@@ -555,6 +563,9 @@ public class PCConformer implements Serializable {
     this.y = y;
   }
 
+  /**
+   * @return Y Coordinates (vector)
+   */
   public Y getY() {
     return y;
   }
@@ -563,6 +574,9 @@ public class PCConformer implements Serializable {
     this.z = z;
   }
 
+  /**
+   * @return Z Coordinates (vector)
+   */
   public Z getZ() {
     return z;
   }
@@ -571,6 +585,9 @@ public class PCConformer implements Serializable {
     this.style = style;
   }
 
+  /**
+   * @return Structure Annotations
+   */
   public PCDrawAnnotations getStyle() {
     return style;
   }
@@ -579,6 +596,9 @@ public class PCConformer implements Serializable {
     this.data = data;
   }
 
+  /**
+   * @return Data Associated with this Conformer
+   */
   public Data getData() {
     return data;
   }

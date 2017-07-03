@@ -17,6 +17,9 @@ import org.openmuc.jasn1.ber.BerTag;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.util.PCCompoundFilter;
 
+/**
+ * Holder for groups of Compounds
+ */
 public class PCCompounds implements Serializable {
 
   private static final long serialVersionUID = 1L;

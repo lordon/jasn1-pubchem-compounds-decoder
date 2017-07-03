@@ -8,6 +8,9 @@ import java.math.BigInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Element Information [which may contain "illegal" element values]
+ */
 public class PCElement extends PubChemTypedBerInteger {
 
   public final static int[] states = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,

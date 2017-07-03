@@ -15,6 +15,11 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Square Planar (SP4) StereoCenters [Using IUPAC Stereogenic Center recommendations and
+ * terminology] [Note: "1" can be used for the Atom Identifier to represent a lonepair or implicit
+ * hydrogen]
+ */
 public class PCStereoSquarePlanar implements Serializable {
 
   static class PCStereoSquarePlanarType extends PubChemTypedBerInteger {
@@ -71,6 +76,9 @@ public class PCStereoSquarePlanar implements Serializable {
     this.center = center;
   }
 
+  /**
+   * @return Atom ID of Atom Center
+   */
   public BerInteger getCenter() {
     return center;
   }
@@ -79,6 +87,9 @@ public class PCStereoSquarePlanar implements Serializable {
     this.lbelow = lbelow;
   }
 
+  /**
+   * @return Atom ID of Left Below Plane Atom
+   */
   public BerInteger getLbelow() {
     return lbelow;
   }
@@ -87,6 +98,9 @@ public class PCStereoSquarePlanar implements Serializable {
     this.rbelow = rbelow;
   }
 
+  /**
+   * @return Atom ID of Right Below Plane Atom
+   */
   public BerInteger getRbelow() {
     return rbelow;
   }
@@ -95,6 +109,9 @@ public class PCStereoSquarePlanar implements Serializable {
     this.labove = labove;
   }
 
+  /**
+   * @return Atom ID of Left Above Plane Atom
+   */
   public BerInteger getLabove() {
     return labove;
   }
@@ -103,6 +120,9 @@ public class PCStereoSquarePlanar implements Serializable {
     this.rabove = rabove;
   }
 
+  /**
+   * @return Atom ID of Right Above Plane Atom
+   */
   public BerInteger getRabove() {
     return rabove;
   }
@@ -111,7 +131,7 @@ public class PCStereoSquarePlanar implements Serializable {
     this.parity = new PCStereoSquarePlanarType(parity);
   }
 
-  public BerInteger getParity() {
+  public PCStereoSquarePlanarType getParity() {
     return parity;
   }
 

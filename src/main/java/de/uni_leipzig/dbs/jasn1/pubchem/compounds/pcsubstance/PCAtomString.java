@@ -14,6 +14,9 @@ import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 import org.openmuc.jasn1.ber.types.string.BerVisibleString;
 
+/**
+ * Specification of an Association between an Atom Identifier and a String Value
+ */
 public class PCAtomString implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -35,6 +38,9 @@ public class PCAtomString implements Serializable {
     this.aid = aid;
   }
 
+  /**
+   * @return Atom Identifier for the Value
+   */
   public BerInteger getAid() {
     return aid;
   }
@@ -43,6 +49,9 @@ public class PCAtomString implements Serializable {
     this.value = value;
   }
 
+  /**
+   * @return Value Associated to the ID
+   */
   public BerVisibleString getValue() {
     return value;
   }

@@ -8,6 +8,9 @@ import java.math.BigInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Coordinate Set Type Distinctions
+ */
 public class PCCoordinateType extends PubChemTypedBerInteger {
 
   public final static int[] states = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 255 };

@@ -15,6 +15,9 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Rudimentary Atom Electronic Configuration Designation
+ */
 public class PCAtomRadical implements Serializable {
 
   static class PCAtomRadicalType extends PubChemTypedBerInteger {
@@ -75,7 +78,10 @@ public class PCAtomRadical implements Serializable {
     this.type = new PCAtomRadicalType(type);
   }
 
-  public BerInteger getType() {
+  /**
+   * @return Type of Atom Radical
+   */
+  public PubChemTypedBerInteger getType() {
     return type;
   }
 

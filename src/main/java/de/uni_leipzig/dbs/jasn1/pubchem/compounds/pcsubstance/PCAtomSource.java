@@ -13,6 +13,9 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * Specification of an Association between an Atom Identifier and Source
+ */
 public class PCAtomSource implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -34,6 +37,9 @@ public class PCAtomSource implements Serializable {
     this.aid = aid;
   }
 
+  /**
+   * @return Atom Identifier for the R-Group Source
+   */
   public BerInteger getAid() {
     return aid;
   }
@@ -42,6 +48,9 @@ public class PCAtomSource implements Serializable {
     this.source = source;
   }
 
+  /**
+   * @return tom Specific MMDB Record
+   */
   public PCMMDBSource getSource() {
     return source;
   }

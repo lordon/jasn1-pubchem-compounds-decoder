@@ -16,6 +16,9 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * Drawing Annotations (in Parallel Arrays) [Note: A pair of atoms can have multiple annotations]
+ */
 public class PCDrawAnnotations implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -416,6 +419,9 @@ public class PCDrawAnnotations implements Serializable {
     this.annotation = annotation;
   }
 
+  /**
+   * @return Bond Annotations (vector)
+   */
   public Annotation getAnnotation() {
     return annotation;
   }
@@ -424,6 +430,9 @@ public class PCDrawAnnotations implements Serializable {
     this.aid1 = aid1;
   }
 
+  /**
+   * @return Atom1 Identifier (vector)
+   */
   public Aid1 getAid1() {
     return aid1;
   }
@@ -432,6 +441,10 @@ public class PCDrawAnnotations implements Serializable {
     this.aid2 = aid2;
   }
 
+  /**
+   * @param aid2
+   *          Atom2 Identifier (vector)
+   */
   public Aid2 getAid2() {
     return aid2;
   }

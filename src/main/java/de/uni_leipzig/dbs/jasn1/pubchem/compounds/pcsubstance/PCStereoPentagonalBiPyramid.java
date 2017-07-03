@@ -13,6 +13,11 @@ import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
 
+/**
+ * Pentagonal BiPyramid (PBPY7) StereoCenters [Using IUPAC Stereogenic Center recommendations and
+ * terminology] [Note: "1" can be used for the Atom Identifier to represent a lonepair or implicit
+ * hydrogen]
+ */
 public class PCStereoPentagonalBiPyramid implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -40,6 +45,9 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     this.center = center;
   }
 
+  /**
+   * @return Atom ID of Atom Center
+   */
   public BerInteger getCenter() {
     return center;
   }
@@ -48,6 +56,9 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     this.top = top;
   }
 
+  /**
+   * @return Atom ID of Atom In-Plane and at the Top
+   */
   public BerInteger getTop() {
     return top;
   }
@@ -56,6 +67,10 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     this.bottom = bottom;
   }
 
+  /**
+   * @param bottom
+   *          Atom ID of Atom In-Plane and at the Bottom
+   */
   public BerInteger getBottom() {
     return bottom;
   }
@@ -64,6 +79,9 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     this.left = left;
   }
 
+  /**
+   * @return Atom ID of Atom In-Plane and at the Left
+   */
   public BerInteger getLeft() {
     return left;
   }
@@ -72,6 +90,9 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     this.labove = labove;
   }
 
+  /**
+   * @return Atom ID of Atom Above the Plane on the Left
+   */
   public BerInteger getLabove() {
     return labove;
   }
@@ -80,18 +101,33 @@ public class PCStereoPentagonalBiPyramid implements Serializable {
     this.lbelow = lbelow;
   }
 
+  /**
+   * @return Atom ID of Atom Below the Plane on the Left
+   */
   public BerInteger getLbelow() {
     return lbelow;
   }
 
+  /**
+   * @param rabove
+   *          Atom ID of Atom Above the Plane on the Right
+   */
   public void setRabove(final BerInteger rabove) {
     this.rabove = rabove;
   }
 
+  /**
+   * @param rabove
+   *          Atom ID of Atom Above the Plane on the Right
+   */
   public BerInteger getRabove() {
     return rabove;
   }
 
+  /**
+   * @param Atom
+   *          ID of Atom Below the Plane on the Right
+   */
   public void setRbelow(final BerInteger rbelow) {
     this.rbelow = rbelow;
   }

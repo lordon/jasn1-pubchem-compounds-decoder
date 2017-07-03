@@ -19,6 +19,9 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 import de.uni_leipzig.dbs.jasn1.pubchem.util.PCCompoundFilter;
 import de.uni_leipzig.dbs.jasn1.pubchem.util.PropsFilter;
 
+/**
+ * Compound Record
+ */
 public class PCCompound implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -588,6 +591,9 @@ public class PCCompound implements Serializable {
     this.atoms = atoms;
   }
 
+  /**
+   * @return AtomID/Type Information
+   */
   public PCAtoms getAtoms() {
     return atoms;
   }
@@ -596,6 +602,9 @@ public class PCCompound implements Serializable {
     this.bonds = bonds;
   }
 
+  /**
+   * @return BondID/Type/Atom Information
+   */
   public PCBonds getBonds() {
     return bonds;
   }
@@ -604,6 +613,9 @@ public class PCCompound implements Serializable {
     this.stereo = stereo;
   }
 
+  /**
+   * @return StereoCenter Descriptions
+   */
   public Stereo getStereo() {
     return stereo;
   }
@@ -612,6 +624,9 @@ public class PCCompound implements Serializable {
     this.coords = coords;
   }
 
+  /**
+   * @return 2D/3D Coordinate Sets of Compound
+   */
   public Coords getCoords() {
     return coords;
   }
@@ -620,6 +635,9 @@ public class PCCompound implements Serializable {
     this.charge = charge;
   }
 
+  /**
+   * @return Provided Total Formal Charge (Signed Integer)
+   */
   public BerInteger getCharge() {
     return charge;
   }
@@ -628,6 +646,9 @@ public class PCCompound implements Serializable {
     this.props = props;
   }
 
+  /**
+   * @return Derived (computed) Properties
+   */
   public Props getProps() {
     return props;
   }
@@ -636,6 +657,9 @@ public class PCCompound implements Serializable {
     this.stereogroups = stereogroups;
   }
 
+  /**
+   * @return Relative stereochemistry groups
+   */
   public Stereogroups getStereogroups() {
     return stereogroups;
   }
@@ -644,6 +668,9 @@ public class PCCompound implements Serializable {
     this.count = count;
   }
 
+  /**
+   * @return Counts of various properties
+   */
   public PCCount getCount() {
     return count;
   }
@@ -652,6 +679,9 @@ public class PCCompound implements Serializable {
     this.vbalt = vbalt;
   }
 
+  /**
+   * @return Alternate Valence-Bond Forms
+   */
   public PCCompounds getVbalt() {
     return vbalt;
   }

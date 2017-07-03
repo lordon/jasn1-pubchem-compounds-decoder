@@ -15,6 +15,9 @@ import java.util.List;
 import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 
+/**
+ * Holder for groups of Conformers
+ */
 public class PCConformers implements Serializable {
 
   private static final long serialVersionUID = 1L;

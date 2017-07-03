@@ -8,6 +8,9 @@ import java.math.BigInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Atom-Atom Annotation Information
+ */
 public class PCBondAnnotation extends PubChemTypedBerInteger {
 
   private static final long serialVersionUID = 1L;

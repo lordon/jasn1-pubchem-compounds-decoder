@@ -8,6 +8,9 @@ import java.math.BigInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Bond Type Information
+ */
 public class PCBondType extends PubChemTypedBerInteger {
 
   public final static int[] states = { 1, 2, 3, 4, 5, 6, 7, 255 };

@@ -15,6 +15,12 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * SP2 Planar Stereogenic Center, Cumulenic StereoCenter (Linear systems on an odd [Using IUPAC
+ * Stereogenic Center recommendations and terminology] IUPAC Stereogenic Center recommendations and
+ * terminology number of double bonds present planar stereochemistry) [Note: "1" can be used for the
+ * Atom Identifier to represent a lonepair or implicit hydrogen]
+ */
 public class PCStereoPlanar implements Serializable {
 
   static class PCStereoPlanarParityType extends PubChemTypedBerInteger {
@@ -96,6 +102,9 @@ public class PCStereoPlanar implements Serializable {
     this.left = left;
   }
 
+  /**
+   * @return Atom ID of Left Double Bond Atom
+   */
   public BerInteger getLeft() {
     return left;
   }
@@ -104,6 +113,9 @@ public class PCStereoPlanar implements Serializable {
     this.ltop = ltop;
   }
 
+  /**
+   * @return Atom ID of Top Atom attached to the Left Double Bond Atom
+   */
   public BerInteger getLtop() {
     return ltop;
   }
@@ -112,6 +124,10 @@ public class PCStereoPlanar implements Serializable {
     this.lbottom = lbottom;
   }
 
+  /**
+   * @param lbottom
+   *          Atom ID of Bottom Atom attached to the Left Double Bond Atom
+   */
   public BerInteger getLbottom() {
     return lbottom;
   }
@@ -120,6 +136,9 @@ public class PCStereoPlanar implements Serializable {
     this.right = right;
   }
 
+  /**
+   * @return Atom ID of Right Double Bond Atom
+   */
   public BerInteger getRight() {
     return right;
   }
@@ -128,6 +147,9 @@ public class PCStereoPlanar implements Serializable {
     this.rtop = rtop;
   }
 
+  /**
+   * @return Atom ID of Top Atom attached to the Right Double Bond Atom
+   */
   public BerInteger getRtop() {
     return rtop;
   }
@@ -136,6 +158,9 @@ public class PCStereoPlanar implements Serializable {
     this.rbottom = rbottom;
   }
 
+  /**
+   * @return Atom ID of Bottom Atom attached to the Right Double Bond Atom
+   */
   public BerInteger getRbottom() {
     return rbottom;
   }
@@ -144,7 +169,10 @@ public class PCStereoPlanar implements Serializable {
     this.parity = new PCStereoPlanarParityType(parity);
   }
 
-  public BerInteger getParity() {
+  /**
+   * @return StereoCenter Designation
+   */
+  public PCStereoPlanarParityType getParity() {
     return parity;
   }
 
@@ -152,7 +180,10 @@ public class PCStereoPlanar implements Serializable {
     this.type = new PCStereoPlanarType(type);
   }
 
-  public BerInteger getType() {
+  /**
+   * @return Type of StereoCenter, SP2 Planar, if not specified
+   */
+  public PCStereoPlanarType getType() {
     return type;
   }
 

@@ -15,6 +15,13 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * SP3 Tetrahedral StereoCenter, Trigonal Pyramid Stereogenic Center, Cumulenic StereoCenter (Linear
+ * systems of an even number of double bonds), or Hindered biaryl stereocenter (All biaryls have
+ * hindered rotation that to some extent the orthohydrogens prevent coplanarity) [Using IUPAC
+ * Stereogenic Center recommendations and terminology] [Note: "1" can be used for the Atom
+ * Identifier to represent a lonepair or implicit hydrogen]
+ */
 public class PCStereoTetrahedral implements Serializable {
 
   static class PCStereoTetrahedralParityType extends PubChemTypedBerInteger {
@@ -95,6 +102,9 @@ public class PCStereoTetrahedral implements Serializable {
     this.center = center;
   }
 
+  /**
+   * @return Atom Identifier of Atom Center
+   */
   public BerInteger getCenter() {
     return center;
   }
@@ -103,6 +113,9 @@ public class PCStereoTetrahedral implements Serializable {
     this.above = above;
   }
 
+  /**
+   * @return Atom Identifier of Atom Above the Plane
+   */
   public BerInteger getAbove() {
     return above;
   }
@@ -111,6 +124,9 @@ public class PCStereoTetrahedral implements Serializable {
     this.top = top;
   }
 
+  /**
+   * @return Atom Identifier of Atom In-Plane and at the Top
+   */
   public BerInteger getTop() {
     return top;
   }
@@ -119,6 +135,9 @@ public class PCStereoTetrahedral implements Serializable {
     this.bottom = bottom;
   }
 
+  /**
+   * @return Atom Identifier of Atom In-Plane and at the Bottom
+   */
   public BerInteger getBottom() {
     return bottom;
   }
@@ -127,6 +146,9 @@ public class PCStereoTetrahedral implements Serializable {
     this.below = below;
   }
 
+  /**
+   * @return Atom Identifier of Atom Below the Plane
+   */
   public BerInteger getBelow() {
     return below;
   }
@@ -135,7 +157,10 @@ public class PCStereoTetrahedral implements Serializable {
     this.parity = new PCStereoTetrahedralParityType(parity);
   }
 
-  public BerInteger getParity() {
+  /**
+   * @return StereoCenter Designation
+   */
+  public PCStereoTetrahedralParityType getParity() {
     return parity;
   }
 
@@ -143,7 +168,10 @@ public class PCStereoTetrahedral implements Serializable {
     this.type = new PCStereoTetrahedralType(type);
   }
 
-  public BerInteger getType() {
+  /**
+   * @return Type of StereoCenter, Tetrahedral, if not specified
+   */
+  public PCStereoTetrahedralType getType() {
     return type;
   }
 

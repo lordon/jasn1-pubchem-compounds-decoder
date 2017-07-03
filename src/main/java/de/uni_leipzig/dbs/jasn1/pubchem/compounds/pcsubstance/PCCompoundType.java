@@ -15,6 +15,10 @@ import org.openmuc.jasn1.ber.types.BerInteger;
 
 import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChemTypedBerInteger;
 
+/**
+ * Qualification used to describe the type of Compound deposited, standardized, or derived. Please
+ * note that mixtures/cocktails may be specified using previously deposited substances.
+ */
 public class PCCompoundType implements Serializable {
 
   static class PCCompoundTypeType extends PubChemTypedBerInteger {
@@ -72,6 +76,9 @@ public class PCCompoundType implements Serializable {
       this.cid = cid;
     }
 
+    /**
+     * Standardized Compound
+     */
     public BerInteger getCid() {
       return cid;
     }
@@ -80,6 +87,9 @@ public class PCCompoundType implements Serializable {
       this.sid = sid;
     }
 
+    /**
+     * @return PubChem Substance (for "mixture" type compounds)
+     */
     public BerInteger getSid() {
       return sid;
     }
@@ -88,6 +98,9 @@ public class PCCompoundType implements Serializable {
       this.xid = xid;
     }
 
+    /**
+     * @return PubChem Theoretical Compound
+     */
     public BerInteger getXid() {
       return xid;
     }
@@ -192,7 +205,10 @@ public class PCCompoundType implements Serializable {
     this.type = new PCCompoundTypeType(type);
   }
 
-  public BerInteger getType() {
+  /**
+   * @return Compound Qualifier or Type
+   */
+  public PCCompoundTypeType getType() {
     return type;
   }
 
@@ -200,6 +216,9 @@ public class PCCompoundType implements Serializable {
     this.id = id;
   }
 
+  /**
+   * @return Compound Namespace and ID (absent for "deposited" type compounds)
+   */
   public Id getId() {
     return id;
   }
