@@ -425,7 +425,7 @@ public class PCInfoData implements Serializable {
 
       public static final BerTag tag = new BerTag(BerTag.UNIVERSAL_CLASS, BerTag.CONSTRUCTED, 16);
       public byte[] code = null;
-      private List<BerRealString> seqOf = null;
+      private List<BerVisibleString> seqOf = null;
 
       public Slist() {
         seqOf = new ArrayList<>();
@@ -435,7 +435,7 @@ public class PCInfoData implements Serializable {
         this.code = code;
       }
 
-      public List<BerRealString> getBerVisibleString() {
+      public List<BerVisibleString> getBerVisibleString() {
         if (seqOf == null) {
           seqOf = new ArrayList<>();
         }
@@ -474,7 +474,7 @@ public class PCInfoData implements Serializable {
               return codeLength;
             }
 
-            BerRealString element = new BerRealString();
+            BerVisibleString element = new BerVisibleString();
             subCodeLength += element.decode(is, false);
             seqOf.add(element);
           }
@@ -499,7 +499,7 @@ public class PCInfoData implements Serializable {
         if (seqOf == null) {
           sb.append("null");
         } else {
-          Iterator<BerRealString> it = seqOf.iterator();
+          Iterator<BerVisibleString> it = seqOf.iterator();
           if (it.hasNext()) {
             sb.append(it.next());
             while (it.hasNext()) {
@@ -527,11 +527,11 @@ public class PCInfoData implements Serializable {
         this.code = code;
       }
 
-      public List<BerRealString> getSeqOf() {
+      public List<BerVisibleString> getSeqOf() {
         return seqOf;
       }
 
-      public void setSeqOf(final List<BerRealString> seqOf) {
+      public void setSeqOf(final List<BerVisibleString> seqOf) {
         this.seqOf = seqOf;
       }
 
