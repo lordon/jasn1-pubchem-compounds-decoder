@@ -24,7 +24,7 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChe
  */
 public class PCStereoTetrahedral implements Serializable {
 
-  static class PCStereoTetrahedralParityType extends PubChemTypedBerInteger {
+  public static class PCStereoTetrahedralParityType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 
@@ -51,7 +51,7 @@ public class PCStereoTetrahedral implements Serializable {
 
   }
 
-  static class PCStereoTetrahedralType extends PubChemTypedBerInteger {
+  public static class PCStereoTetrahedralType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 

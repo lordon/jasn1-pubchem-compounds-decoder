@@ -21,7 +21,7 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChe
  */
 public class PCCompoundType implements Serializable {
 
-  static class PCCompoundTypeType extends PubChemTypedBerInteger {
+  public static class PCCompoundTypeType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 

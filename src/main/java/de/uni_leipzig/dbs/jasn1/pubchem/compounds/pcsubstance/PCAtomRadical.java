@@ -20,7 +20,7 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChe
  */
 public class PCAtomRadical implements Serializable {
 
-  static class PCAtomRadicalType extends PubChemTypedBerInteger {
+  public static class PCAtomRadicalType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 

@@ -27,7 +27,7 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChe
  */
 public class PCStereoGroup implements Serializable {
 
-  static class PCStereoGroupType extends PubChemTypedBerInteger {
+  public static class PCStereoGroupType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 

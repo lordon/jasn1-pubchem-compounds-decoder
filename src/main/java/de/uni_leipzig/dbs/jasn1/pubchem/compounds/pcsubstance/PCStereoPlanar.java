@@ -23,7 +23,7 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.type.custom.PubChe
  */
 public class PCStereoPlanar implements Serializable {
 
-  static class PCStereoPlanarParityType extends PubChemTypedBerInteger {
+  public static class PCStereoPlanarParityType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class PCStereoPlanar implements Serializable {
 
   }
 
-  static class PCStereoPlanarType extends PubChemTypedBerInteger {
+  public static class PCStereoPlanarType extends PubChemTypedBerInteger {
 
     private static final long serialVersionUID = 1L;
 
