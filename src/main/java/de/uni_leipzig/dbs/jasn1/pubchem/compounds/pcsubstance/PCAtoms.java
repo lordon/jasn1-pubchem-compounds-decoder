@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import de.uni_leipzig.dbs.jasn1.pubchem.util.PCAtomsFilter;
 import org.openmuc.jasn1.ber.BerLength;
 import org.openmuc.jasn1.ber.BerTag;
 import org.openmuc.jasn1.ber.types.BerInteger;
@@ -20,6 +21,8 @@ import org.openmuc.jasn1.ber.types.BerInteger;
  * Atom Information (in Parallel Arrays)
  */
 public class PCAtoms implements Serializable {
+
+  private PCAtomsFilter pcAtomsFilter = null;
 
   private static final long serialVersionUID = 1L;
 
@@ -1070,6 +1073,10 @@ public class PCAtoms implements Serializable {
   public PCAtoms() {
   }
 
+  public PCAtoms(final PCAtomsFilter pcAtomsFilter) {
+    this.pcAtomsFilter = pcAtomsFilter;
+  }
+
   public PCAtoms(final byte[] code) {
     this.code = code;
   }
@@ -1210,6 +1217,9 @@ public class PCAtoms implements Serializable {
         codeLength += length.decode(is);
         label = new Label();
         subCodeLength += label.decode(is, true);
+        if (pcAtomsFilter.isSkipOptionalAtomData()) {
+          label = null;
+        }
         subCodeLength += berTag.decode(is);
 
         if (length.val == -1) {
@@ -1222,6 +1232,9 @@ public class PCAtoms implements Serializable {
         codeLength += length.decode(is);
         isotope = new Isotope();
         subCodeLength += isotope.decode(is, true);
+        if (pcAtomsFilter.isSkipOptionalAtomData()) {
+          isotope = null;
+        }
         subCodeLength += berTag.decode(is);
 
         if (length.val == -1) {
@@ -1234,6 +1247,9 @@ public class PCAtoms implements Serializable {
         codeLength += length.decode(is);
         charge = new Charge();
         subCodeLength += charge.decode(is, true);
+        if (pcAtomsFilter.isSkipOptionalAtomData()) {
+          charge = null;
+        }
         subCodeLength += berTag.decode(is);
 
         if (length.val == -1) {
@@ -1246,6 +1262,9 @@ public class PCAtoms implements Serializable {
         codeLength += length.decode(is);
         radical = new Radical();
         subCodeLength += radical.decode(is, true);
+        if (pcAtomsFilter.isSkipOptionalAtomData()) {
+          radical = null;
+        }
         subCodeLength += berTag.decode(is);
 
         if (length.val == -1) {
@@ -1258,6 +1277,9 @@ public class PCAtoms implements Serializable {
         codeLength += length.decode(is);
         source = new Source();
         subCodeLength += source.decode(is, true);
+        if (pcAtomsFilter.isSkipOptionalAtomData()) {
+          source = null;
+        }
         subCodeLength += berTag.decode(is);
 
         if (length.val == -1) {
@@ -1270,6 +1292,9 @@ public class PCAtoms implements Serializable {
         codeLength += length.decode(is);
         comment = new Comment();
         subCodeLength += comment.decode(is, true);
+        if (pcAtomsFilter.isSkipOptionalAtomData()) {
+          comment = null;
+        }
         subCodeLength += berTag.decode(is);
 
         if (length.val == -1) {

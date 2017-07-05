@@ -724,9 +724,9 @@ public class PCCompound implements Serializable {
 
       if (berTag.equals(BerTag.CONTEXT_CLASS, BerTag.CONSTRUCTED, 1)) {
         codeLength += length.decode(is);
-        atoms = new PCAtoms();
+        atoms = new PCAtoms(pcFilter.getAtomsFilter());
         subCodeLength += atoms.decode(is, true);
-        if (!pcFilter.isParseAtoms()) {
+        if (!pcFilter.getAtomsFilter().isParseAtoms()) {
           atoms = null;
         }
         subCodeLength += berTag.decode(is);

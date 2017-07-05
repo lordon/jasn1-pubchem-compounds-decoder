@@ -35,7 +35,7 @@ import de.uni_leipzig.dbs.jasn1.pubchem.compounds.pcsubstance.PCCompound;
  */
 public class PCCompoundFilter {
 
-  private boolean parseAtoms = true;
+  private PCAtomsFilter atomsFilter = null;
   private boolean parseBonds = true;
   private boolean parseStereo = true;
   private boolean parseCoords = true;
@@ -48,8 +48,9 @@ public class PCCompoundFilter {
    * All fields of {@link PCCompound} will be kept, and given {@link PropsFilter} will be used for
    * properties.
    */
-  public PCCompoundFilter(final PropsFilter filter) {
-    this.propsFilter = filter;
+  public PCCompoundFilter(final PropsFilter propsFilter, final PCAtomsFilter atomsFilter) {
+    this.propsFilter = propsFilter;
+    this.atomsFilter = atomsFilter;
   }
 
   /**
@@ -59,6 +60,7 @@ public class PCCompoundFilter {
    */
   public PCCompoundFilter() {
     this.propsFilter = new PropsFilter();
+    this.atomsFilter = new PCAtomsFilter();
   }
 
   /**
@@ -78,20 +80,15 @@ public class PCCompoundFilter {
    * @return
    */
   public static PCCompoundFilter getExampleFilter() {
-    PCCompoundFilter filter = new PCCompoundFilter(PropsFilter.getExampleFilter());
+    PCCompoundFilter filter = new PCCompoundFilter(PropsFilter.getExampleFilter(), PCAtomsFilter.getExampleFilter());
     filter.setParseStereo(false);
     filter.setParseStereogroups(false);
     filter.setParseVbalt(false);
     return filter;
   }
 
-  /**
-   * Sets, whether atoms should be kept after parsing.
-   *
-   * @see PCCompoundFilter
-   */
-  public void setParseAtoms(final boolean parseAtoms) {
-    this.parseAtoms = parseAtoms;
+  public void setAtomsFilter(PCAtomsFilter atomsFilter) {
+    this.atomsFilter = atomsFilter;
   }
 
   /**
@@ -161,8 +158,9 @@ public class PCCompoundFilter {
     this.parseVbalt = parseVbalt;
   }
 
-  public boolean isParseAtoms() {
-    return parseAtoms;
+
+  public PCAtomsFilter getAtomsFilter() {
+    return atomsFilter;
   }
 
   public boolean isParseBonds() {
