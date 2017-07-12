@@ -28,4 +28,12 @@ public class PubchemResourceAnchor {
   public static InputStream getSomeGZippedCompoundstoString() {
     return ClassLoader.getSystemResourceAsStream("Compound_099350001_099375000.asn.gz.txt");
   }
+
+  /**
+   * @return InputStream of <a href="https://en.wikipedia.org/wiki/Toluene">Toluene</a> and other
+   *         hexagonal structured compounds, not gzipped.
+   */
+  public static InputStream getTolueneAndOtherHexagonal() {
+    return ClassLoader.getSystemResourceAsStream("Compound_000001140_000001141.asn");
+  }
 }
