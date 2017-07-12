@@ -33,7 +33,15 @@ public class PropsFilter {
   /**
    * Only properties with given (concatenated) labels and names will be parsed
    */
-  private final Set<String> whitelistLabelName = new HashSet<>();
+  private Set<String> whitelistLabelName = new HashSet<>();
+
+  public PropsFilter() {
+  }
+
+  public PropsFilter(final boolean skipMetadata, final Set<String> whitelistlabelName) {
+    this.skipMetadata = skipMetadata;
+    this.whitelistLabelName = whitelistlabelName;
+  }
 
   public boolean isSkipMetadata() {
     return skipMetadata;
