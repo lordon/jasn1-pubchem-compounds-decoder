@@ -16,3 +16,27 @@ This project is based on the jASN1 parser : https://www.openmuc.org/asn1/, which
 ## Usage
 Just run de.uni_leipzig.dbs.jasn1.pubchem.example.ExampleParse to see the parser in action.
 
+##Maven Artifact
+
+Add this as a Repository:
+```
+<repositories>
+    <repository>
+        <id>jasn1-pubchem-compounds-decoder-mvn-repo</id>
+        <url>https://raw.github.com/USERNAME/jasn1-pubchem-compounds-decoder/mvn-repo/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+```
+
+And this is the dependency:
+```
+	<dependency>
+	    <groupId>de.uni_leipzig.dbs</groupId>
+	    <artifactId>jasn1-pubchem-compounds-decoder</artifactId>
+	    <version>0.0.1</version>
+	</dependency>
+```
